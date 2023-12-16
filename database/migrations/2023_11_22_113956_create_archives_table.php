@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('archives', function (Blueprint $table) {
             $table->id();
             $table->float('Final_resault');
-            $table->timestamps();
         });
     }
 
