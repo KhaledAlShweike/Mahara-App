@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('sport_type_id')->constraint()->onDelete('cascade')->onupdate('cascade');
-            $table->timestamps();
         });           
 
     }

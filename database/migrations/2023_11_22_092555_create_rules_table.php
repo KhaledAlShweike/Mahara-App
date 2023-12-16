@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('rules', function (Blueprint $table) {
             $table->id();
-            $table->enum('Rule',['Player','app_admin','club_manager','Doctor']);
-            $table->timestamps();
+            $table->enum('Rule',['Player','app_admin','club_manager','Doctor'])->default('Player');
         });
     }
 

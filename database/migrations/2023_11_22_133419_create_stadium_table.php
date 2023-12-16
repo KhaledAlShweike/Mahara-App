@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('stadium_type');
             $table->integer('price');
             $table->float('discount');
-            $table->timestamps();
         });
     }
 
