@@ -24,7 +24,7 @@ class Actor_personal_info extends Model
         'email',
         'password',
         'code',
-        'b_date',
+        'b_date'
     ];
     public function App_admin()
     {

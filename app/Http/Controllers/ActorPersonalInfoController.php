@@ -21,9 +21,10 @@ class ActorPersonalInfoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Actor_personal_info $actor_personal)
     {
-        //
+     
+
     }
 
     /**
@@ -39,11 +40,7 @@ class ActorPersonalInfoController extends Controller
      */
     public function show(Actor_personal_info $actor_personal_info)
     {
-        $actor = Actor_personal_info::find($actor_personal_info);
-        foreach($actor->rules as $rule)
-        {
-            echo $rule->rule_type;
-        }
+       
     }
 
     /**
