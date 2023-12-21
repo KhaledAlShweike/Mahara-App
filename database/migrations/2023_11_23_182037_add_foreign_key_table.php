@@ -83,6 +83,11 @@ return new class extends Migration
             $table->foreignIdFor(Sport_type::class)->nullable()->constrained();
         });
         
+        Schema::table('images', function (Blueprint $table) {
+            $table->foreignIdFor(Club::class)->nullable()->constrained();
+            $table->foreignIdFor(Stadium::class)->nullable()->constrained('stadium');
+        });
+        
     }
 
     /**

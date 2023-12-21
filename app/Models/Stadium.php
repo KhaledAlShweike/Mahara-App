@@ -19,4 +19,9 @@ class Stadium extends Model
     {
         return $this->belongsToMany(Club::class);
     }
+
+    public function Image()
+    {
+        return $this->hasMany(Image::class);
+    }
 }
