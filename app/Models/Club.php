@@ -32,4 +32,9 @@ class Club extends Model
     {
         return $this->belongsTo(Location::class);
     }
+
+    public function Image()
+    {
+        return $this->hasMany(Image::class);
+    }
 }

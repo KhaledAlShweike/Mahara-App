@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ReservationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,6 @@ Route::get('/reservations', [ReservationController::class, 'index']);
 
 
 Route::post('/signup', [AuthController::class, 'signup']);
+
+
+Route::post('/upload-image', [ImageController::class, 'upload']);
