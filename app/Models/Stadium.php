@@ -22,6 +22,6 @@ class Stadium extends Model
 
     public function Image()
     {
-        return $this->hasMany(Image::class);
+        return $this->hasMany(Image::class,'id','price');
     }
 }

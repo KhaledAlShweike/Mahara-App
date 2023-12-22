@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Club;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class ClubController extends Controller
 {
@@ -34,9 +35,15 @@ class ClubController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Club $club)
+    public function show($id)
     {
-        //
+        $club = Club::with(['image', 'image.image_path'])->find($id);
+
+        if ($club) {
+            return response()->json(['data' => $club], 200);
+        } else {
+            return response()->json(['message' => 'Club not found'], 404);
+        }
     }
 
     /**

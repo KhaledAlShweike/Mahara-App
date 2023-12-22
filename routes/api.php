@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\StadiumController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -28,3 +30,8 @@ Route::post('/signup', [AuthController::class, 'signup']);
 
 
 Route::post('/upload-image', [ImageController::class, 'upload']);
+
+
+
+Route::get('/clubs/{id}', [ClubController::class, 'show']);
+Route::get('/stadia/{id}', [StadiumController::class, 'show']);

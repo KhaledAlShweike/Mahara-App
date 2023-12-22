@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Stadium;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class StadiumController extends Controller
 {
@@ -34,11 +35,16 @@ class StadiumController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Stadium $stadium)
+    public function show($id)
     {
-        //
-    }
+        $stadium = Stadium::with(['image', 'image.image_path'])->find($id);
 
+        if ($stadium) {
+            return response()->json(['data' => $stadium], 200);
+        } else {
+            return response()->json(['message' => 'Stadium not found'], 404);
+        }
+    }
     /**
      * Show the form for editing the specified resource.
      */

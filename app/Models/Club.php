@@ -12,6 +12,9 @@ class Club extends Model
 {
     use HasFactory;
 
+    // Additional details
+    protected $fillable = ['name', 'address', 'phone_number'];
+
     public function Locations()
     {
         return $this->belongsToMany(Location::class);
@@ -35,6 +38,6 @@ class Club extends Model
 
     public function Image()
     {
-        return $this->hasMany(Image::class);
+        return $this->hasMany(Image::class,'name','id');
     }
 }
