@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Team_toPlayer_matching;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class TeamToPlayerMatchingController extends Controller
 {

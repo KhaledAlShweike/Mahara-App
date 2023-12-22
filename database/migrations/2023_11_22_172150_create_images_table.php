@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('image_path');
-          
+            $table->foreignIdFor(Club::class)->nullable()->constrained();
+            $table->foreignIdFor(Stadium::class)->nullable()->constrained('stadium');
         });
     }
 

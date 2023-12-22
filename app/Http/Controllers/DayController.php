@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Day;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class DayController extends Controller
 {

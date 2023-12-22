@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sport_type;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class SportTypeController extends Controller
 {

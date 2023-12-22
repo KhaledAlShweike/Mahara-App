@@ -14,4 +14,11 @@ class Team_to_Team_matching extends Model
     {
         return $this->belongsTo(Location::class);
     }
+
+    public function listTeamConnections()
+{
+    $teamConnections = Team_to_Team_matching::orderBy('created_at', 'asc')->get();
+
+    return response()->json(['team_connections' => $teamConnections], 200);
+}
 }
