@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Player;
+use App\Models\Team;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,10 +14,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('team_players', function (Blueprint $table) {
-            $table->unsignedBigInteger('player_id');
-            $table->unsignedBigInteger('team_id');
-            $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignIdFor(Player::class)->nullable()->constrained(); 
+            $table->foreignIdFor(Team::class)->nullable()->constrained();   
         });
     }
 

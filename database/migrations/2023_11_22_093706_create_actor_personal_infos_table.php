@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreign('Rule_id')->references('id')->on('rules')->onDelete('cascade')->onUpdate('cascade');
             $table->string('code')->nullable();
             $table->dateTime('b_date')->nullable()->default(now());
+            $table->enum('gender',['male','female']);
         });
     }
 

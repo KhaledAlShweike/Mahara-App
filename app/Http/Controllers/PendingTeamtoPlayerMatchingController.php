@@ -3,11 +3,45 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pending_TeamtoPlayer_matching;
+use App\Models\Pending_TeamtoTeam_matching;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class PendingTeamtoPlayerMatchingController extends Controller
 {
+
+
+    public function connectTeam_to_player()
+    {
+        // Your logic to find matching teams based on criteria
+        $matchingTeams = \Illuminate\Support\Facades\DB::table('pending__teamto_player_matchings')
+            ->select('team_id', 'player_id')
+            ->where('status', false) // Assuming false means the match is not yet connected
+            ->orderBy('created_at', 'asc') // Oldest first
+            ->first();
+
+        if (!$matchingTeams) {
+            return response()->json(['message' => 'No matching teams found'], 404);
+        }
+
+        // Your logic to connect teams and update status
+        $teamId = $matchingTeams->team_one_id;
+        $playerid = $matchingTeams->player_id;
+
+        // Update the status or perform any other actions as needed
+        Pending_TeamtoTeam_matching::where('team_one_id', $teamId)
+            ->where('team_two_id', $playerid)
+            ->update(['status' => true]);
+
+        return response()->json([
+            'message' => 'player connected with the team for the match',
+            'team_one_id' => $teamId,
+            'player_id' => $playerid,
+        ], 200);
+    }
+
+
     /**
      * Display a listing of the resource.
      */

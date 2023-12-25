@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller;
 class TeamController extends Controller
 {
     
+    
     /**
      * Display a listing of the resource.
      */

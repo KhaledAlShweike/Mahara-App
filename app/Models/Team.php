@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     use HasFactory;
+
+    protected $fillable =['name','sport_type'];
+
     public function Players()
     {
         return $this->belongsToMany(Player::class);
