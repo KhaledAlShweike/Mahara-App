@@ -10,17 +10,10 @@ use Illuminate\Routing\Controller;
 
 class TeamToTeamMatching extends Controller
 {
-    public function Teamtoteam_matching(Request $request)
+    public function TeamtoteamMatching(Request $request)
     {
         // Validation 
-        $this->validate($request, [
-            'start_time' => 'required|date_format:Y-m-d H:i:s',
-            'end_time' => 'required|date_format:Y-m-d H:i:s|after:start_time',
-            'team1_id' => 'required|exists:teams,id',
-            'team2_id' => 'required|exists:teams,id|different:team1_id',
-            'location' => 'required|exists:locations,name',
-            'sport_type' => 'required|exists:sport_types,name',
-        ]);
+        $this->validateRequest($request);
 
         $startTime = $request->input('start_time');
         $endTime = $request->input('end_time');

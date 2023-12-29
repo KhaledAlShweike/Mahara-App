@@ -22,7 +22,7 @@ use App\Models\Team_toPlayer_matching;
 |
 */
 
-Route::post('/login', [AuthController::class, 'playerLogin']);
+Route::post('/login', [AuthController::class, 'login']);
 Route::post('/login/club_manager', [AuthController::class, 'clubManagerLogin']);
 Route::post('/register', [AuthController::class, 'playerSignup']);
 Route::post('/logout', [AuthController::class, 'logout']);
@@ -39,6 +39,6 @@ Route::post('/upload-image', [ImageController::class, 'upload']);
 Route::get('/clubs/{id}', [ClubController::class, 'show']);
 Route::get('/stadiam/{id}', [StadiumController::class, 'show']);
 
-Route::post('/ToTmatching', [Team_to_Team_matching::class, 'Teamtoteam_Matching']);
+Route::post('/ToTmatching', [Team_to_Team_matching::class, 'TeamtoteamMatching']);
 
-Route::post('/ToPmatching', [Team_toPlayer_matching::class, 'Teamtoplayer_Matching']);
+Route::post('/ToPmatching', [Team_toPlayer_matching::class, 'TeamtoplayerMatching']);
