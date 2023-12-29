@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Models\Pending_TeamtoTeam_matching;
 use App\Models\Team_to_Team_matching;
+use App\Models\Team_toPlayer_matching;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +39,6 @@ Route::post('/upload-image', [ImageController::class, 'upload']);
 Route::get('/clubs/{id}', [ClubController::class, 'show']);
 Route::get('/stadiam/{id}', [StadiumController::class, 'show']);
 
-Route::post('/matching', [Team_to_Team_matching::class, 'Team_to_teammatching']);
+Route::post('/ToTmatching', [Team_to_Team_matching::class, 'Teamtoteam_Matching']);
+
+Route::post('/ToPmatching', [Team_toPlayer_matching::class, 'Teamtoplayer_Matching']);
