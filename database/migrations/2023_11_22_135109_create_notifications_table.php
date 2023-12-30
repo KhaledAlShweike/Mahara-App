@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('title');
             $table->text('content')->nullable();
             $table->string('flow_id');
-            $table->string('url')->nullable();
             $table->dateTime('expire_date');
+            $table->boolean('is_read')->default(false);
         });
     }
 

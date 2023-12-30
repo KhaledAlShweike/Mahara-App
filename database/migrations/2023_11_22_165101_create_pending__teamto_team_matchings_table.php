@@ -16,7 +16,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pending__teamto_team_matchings', function (Blueprint $table) {
-            $table->id('P_id');
+            $table->id();
             $table->dateTime('start_time')->nullable()->comment("Match start time");
             $table->dateTime('end_time')->nullable()->comment("Match end time");
             $table->boolean('status');

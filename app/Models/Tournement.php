@@ -15,7 +15,7 @@ class Tournement extends Model
 
     public function Clubs()
     {
-        return $this->belongsToMany(Club::class);
+        return $this->hasMany(Club::class);
     }
     public function Teams()
     {

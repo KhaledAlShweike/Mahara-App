@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\Image;
 use App\Models\Player;
-use App\Models\Team;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('team_players', function (Blueprint $table) {
-            $table->boolean('Captin');
-            $table->foreignIdFor(Player::class)->nullable()->constrained(); 
-            $table->foreignIdFor(Team::class)->nullable()->constrained();   
+        Schema::create('alterimage', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Player::class)->nullable()->constrained();
+            $table->foreignIdFor(Image::class)->nullable()->constrained();
+            $table->timestamps();
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('team_players');
+        Schema::dropIfExists('alterimage_');
     }
 };

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('Rank');
             $table->foreignId('sport_type_id')->constraint()->onDelete('cascade')->onupdate('cascade');
         });           
 
