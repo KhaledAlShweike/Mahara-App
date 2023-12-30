@@ -29,7 +29,7 @@ class Club extends Model
     }
     public function Tournement()
     {
-        return $this->belongsToMany(Tournement::class);
+        return $this->belongsTo(Tournement::class);
     }
     public function Location()
     {

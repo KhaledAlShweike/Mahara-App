@@ -12,7 +12,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-header('Content-Type: application/json; charset=utf-8')
+header('Content-Type: application/json; charset=utf-8');
 
 class AuthController extends Controller
 {

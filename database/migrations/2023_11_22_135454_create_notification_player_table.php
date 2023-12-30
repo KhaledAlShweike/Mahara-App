@@ -14,7 +14,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('notification_player', function (Blueprint $table) {
-           $table->boolean('is_read')->default(false);
            $table->foreignIdFor(Player::class)->nullable()->constrained();
            $table->foreignIdFor(Notification::class)->nullable()->constrained();
         });
