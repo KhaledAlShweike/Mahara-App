@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\V1\Teamtoplayer_Matching;
+use App\Http\Controllers\Api\V1\TeamToTeamMatching;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ReservationController;
@@ -9,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Models\Pending_TeamtoTeam_matching;
 use App\Models\Team_to_Team_matching;
+use App\Models\Team_toPlayer_matching;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +24,7 @@ use App\Models\Team_to_Team_matching;
 |
 */
 
-Route::post('/login', [AuthController::class, 'playerLogin']);
+Route::post('/login', [AuthController::class, 'login']);
 Route::post('/login/club_manager', [AuthController::class, 'clubManagerLogin']);
 Route::post('/register', [AuthController::class, 'playerSignup']);
 Route::post('/logout', [AuthController::class, 'logout']);
@@ -38,4 +41,6 @@ Route::post('/upload-image', [ImageController::class, 'upload']);
 Route::get('/clubs/{id}', [ClubController::class, 'show']);
 Route::get('/stadiam/{id}', [StadiumController::class, 'show']);
 
-Route::post('/matching', [Team_to_Team_matching::class, 'Team_to_teammatching']);
+Route::post('/ToTmatching', [TeamToTeamMatching::class, 'TeamtoteamMatching']);
+
+Route::post('/ToPmatching', [Teamtoplayer_Matching::class, 'TeamtoplayerMatching']);

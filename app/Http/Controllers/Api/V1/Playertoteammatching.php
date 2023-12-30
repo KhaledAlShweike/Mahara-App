@@ -2,34 +2,28 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Pending_TeamtoTeam_matching;
+use App\Models\Pending_TeamtoPlayer_matching;
 use App\Models\Reservation;
+use App\Models\Player;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class Matching extends Controller
+
+class Teamtoplayer_Matching extends Controller
 {
-    public function searchAndMatchTeams(Request $request)
+
+    public function TeamtoplayerMatching(Request $request)
     {
-        // Validation 
-        $this->validate($request, [
-            'start_time' => 'required|date_format:Y-m-d H:i:s',
-            'end_time' => 'required|date_format:Y-m-d H:i:s|after:start_time',
-            'team1_id' => 'required|exists:teams,id',
-            'team2_id' => 'required|exists:teams,id|different:team1_id',
-            'location' => 'required|exists:locations,name',
-            'sport_type' => 'required|exists:sport_types,name',
-        ]);
+        $this->validateRequest($request);
 
         $startTime = $request->input('start_time');
         $endTime = $request->input('end_time');
-        $team1Id = $request->input('team1_id');
-        $team2Id = $request->input('team2_id');
+        $teamId = $request->input('team_id');
+        $playerId = $request->input('player_id');
         $location = $request->input('location');
         $sportType = $request->input('sport_type');
 
-        // Search for available reservations within the specified time range
         $availableReservations = Reservation::where(function ($query) use ($startTime, $endTime) {
             $query->where(function ($subQuery) use ($startTime, $endTime) {
                 $subQuery->where('start_time', '>=', $startTime)
@@ -38,36 +32,36 @@ class Matching extends Controller
                 $subQuery->where('start_time', '<=', $startTime)
                     ->where('end_time', '>=', $endTime);
             });
-        })->doesntHave('pendingTeamToTeamMatchings')->doesntHave('teamMatches')->get();
+        })->doesntHave('Pending_teamtoplayer_matching')->doesntHave('PlayertoTeammatching')->get();
 
-        // Perform team matching logic based on available reservations
         foreach ($availableReservations as $reservation) {
             $matchingCriteria = [
-                'team1_id' => $team1Id,
-                'team2_id' => $team2Id,
+                'team1_id' => $teamId,
+                'player_id' => $playerId,
                 'location' => $location,
                 'sport_type' => $sportType,
                 'start_time' => $startTime,
                 'end_time' => $endTime,
             ];
 
-            // Check if teams match and add to pending team to team matching
-            if ($this->checkTeamsMatch($matchingCriteria)) {
-                $pendingMatching = Pending_TeamtoTeam_matching::create($matchingCriteria);
+            // Check if they match and add to pending tema to player matching
+            if ($this->checkTOPMatch($matchingCriteria)) {
+                $pendingMatching = Pending_TeamtoPlayer_matching::create($matchingCriteria);
 
                 return response()->json([
                     'message' => 'Matching process created successfully',
                     'teams' => [
-                        'team1_id' => $matchingCriteria['team1_id'],
-                        'team2_id' => $matchingCriteria['team2_id'],
+                        'team_id' => $matchingCriteria['team_id'],
+                        'player_id' => $matchingCriteria['player-id'],
                     ],
                     'reservation' => [
                         'start_time' => $reservation->start_time,
                         'end_time' => $reservation->end_time,
                         'club_id' => $reservation->club_id,
+                        'name' => $reservation->club_name,
+                        'address' => $reservation->address,
                         'stadium_id' => $reservation->stadium_id,
                         'sport_type' => $reservation->sport_type,
-                        // Add other reservation details as needed
                     ],
                     'pending_matching_id' => $pendingMatching->id,
                 ], 200);
@@ -77,23 +71,25 @@ class Matching extends Controller
         return response()->json(['message' => 'No matching process created'], 404);
     }
 
-    private function checkTeamsMatch($criteria)
+
+
+    private function checkTOPMatch($criteria)
     {
-        // Retrieve team information based on criteria
-        $team1 = Team::find($criteria['team1_id']);
-        $team2 = Team::find($criteria['team2_id']);
+        // Retrieve team and player information based on criteria
+        $team = Team::find($criteria['team_id']);
+        $player = Player::find($criteria['player_id']);
 
         // Check if teams exist
-        if (!$team1 || !$team2) {
+        if (!$team || !$player) {
             return false;
         }
 
-        // Check if teams have the same location and sport type
+        // Check if they have the same location and sport type
         return (
-            $team1->location === $criteria['location'] &&
-            $team1->sport_type === $criteria['sport_type'] &&
-            $team2->location === $criteria['location'] &&
-            $team2->sport_type === $criteria['sport_type']
+            $team->location === $criteria['location'] &&
+            $team->sport_type === $criteria['sport_type'] &&
+            $player->location === $criteria['location'] &&
+            $player->sport_type === $criteria['sport_type']
         );
     }
 }

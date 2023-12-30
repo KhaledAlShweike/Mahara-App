@@ -1,5 +1,4 @@
-
-app/Http/Middleware/CorsMiddleware.php
+<?php
 namespace App\Http\Middleware;
 
 use Closure;

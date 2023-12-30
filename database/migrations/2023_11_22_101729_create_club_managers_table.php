@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('club_managers', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->nullable();
             $table->unsignedBigInteger('personal_info_id');
             $table->foreign('personal_info_id')->references('id')->on('actor_personal_infos')->onDelete('cascade')->onUpdate('cascade');
         });
