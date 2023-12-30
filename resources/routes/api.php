@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\V1\Teamtoplayer_Matching;
+use App\Http\Controllers\Api\V1\TeamToTeamMatching;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ReservationController;
@@ -39,6 +41,6 @@ Route::post('/upload-image', [ImageController::class, 'upload']);
 Route::get('/clubs/{id}', [ClubController::class, 'show']);
 Route::get('/stadiam/{id}', [StadiumController::class, 'show']);
 
-Route::post('/ToTmatching', [Team_to_Team_matching::class, 'TeamtoteamMatching']);
+Route::post('/ToTmatching', [TeamToTeamMatching::class, 'TeamtoteamMatching']);
 
-Route::post('/ToPmatching', [Team_toPlayer_matching::class, 'TeamtoplayerMatching']);
+Route::post('/ToPmatching', [Teamtoplayer_Matching::class, 'TeamtoplayerMatching']);
