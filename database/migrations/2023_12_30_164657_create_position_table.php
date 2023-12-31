@@ -12,11 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_position_', function (Blueprint $table) {
+        Schema::create('position', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('Sporttype_id');
             $table->foreignIdFor(Sport_type::class)->constrained()->nullable();
-            $table->enum('Football', ['Attacker', ' Gooal Keeper ', ' Defender ', 'Midfielder']);
+            $table->enum('Position',['Football','Basketball']);
+            $table->enum('Football',['Attacker', ' Gooal Keeper ', ' Defender ', 'Midfielder']);
             $table->enum('Basketball', ['Center',' Power forward', 'Small forward',' Point guard', 'Shooting guard']);
             $table->timestamps();
         });
