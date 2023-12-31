@@ -13,7 +13,14 @@ class TeamToTeamMatching extends Controller
     public function TeamtoteamMatching(Request $request)
     {
         // Validation 
-        $this->validateRequest($request);
+        $this->validate($request, [
+            'start_time' => 'date_format:Y-m-d H:i:s',
+            'end_time' => 'date_format:Y-m-d H:i:s|after:start_time',
+            'team1_id' => 'required|exists:teams,id',
+            'team2_id' => 'required|exists:teams,id|different:team1_id',
+            'location' => 'required|exists:locations,name',
+            'sport_type' => 'required|exists:sport_types,name',
+        ]);
 
         $startTime = $request->input('start_time');
         $endTime = $request->input('end_time');

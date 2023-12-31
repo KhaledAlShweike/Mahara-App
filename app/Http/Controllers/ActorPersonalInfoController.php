@@ -15,7 +15,7 @@ class ActorPersonalInfoController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

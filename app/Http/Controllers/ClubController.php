@@ -2,18 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\LocationController;
 use App\Models\Club;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class ClubController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function getClub(Request $request)
     {
-        //
+        $this->validate($request, [
+            'location_name' => 'required|exists:locations,name',
+        ]);
+
+        $locationName = $request->input('location_name');
+        $clubs = Club::where('location', $locationName)->get();
+
+        if ($clubs->isEmpty()) {
+            return response()->json(['message' => 'No clubs found in this location'], 404);
+        }
+
+        return response()->json(['clubs' => $clubs], 200);
     }
 
     /**

@@ -15,7 +15,14 @@ class Teamtoplayer_Matching extends Controller
 
     public function TeamtoplayerMatching(Request $request)
     {
-        $this->validateRequest($request);
+        $this->validate($request, [
+            'start_time' => 'required|date_format:Y-m-d H:i:s',
+            'end_time' => 'required|date_format:Y-m-d H:i:s|after:start_time',
+            'team_id' => 'required|exists:teams,id',
+            'player_id' => 'required|exists:Players,id',
+            'location' => 'required|exists:locations,name',
+            'sport_type' => 'required|exists:sport_types,name',
+        ]);
 
         $startTime = $request->input('start_time');
         $endTime = $request->input('end_time');

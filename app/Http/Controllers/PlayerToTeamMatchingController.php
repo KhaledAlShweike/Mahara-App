@@ -8,17 +8,26 @@ use Illuminate\Routing\Controller;
 
 class PlayerToTeamMatchingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+
+    public function getPlayertoTeammatching(Request $request)
     {
-        //
+        $this->validate($request, [
+            'location_name' => 'required|exists:locations,name',
+        ]);
+
+        $locationName = $request->input('location_name');
+        $Playertoteam = Player_toTeam_matching::where('location_name', $locationName)->get();
+
+        if ($Playertoteam->isEmpty()) {
+            return response()->json(['message' => 'No matching found in this location'], 404);
+        }
+
+        return response()->json(['player to team matchs' => $Playertoteam], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
+    
     public function create()
     {
         //

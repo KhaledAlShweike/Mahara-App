@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('Rank');
+            $table->boolean('enable_join')->default(false);
             $table->foreignId('sport_type_id')->constraint()->onDelete('cascade')->onupdate('cascade');
         });           
 

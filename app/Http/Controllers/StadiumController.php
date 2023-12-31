@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Club;
 use App\Models\Stadium;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -11,9 +12,21 @@ class StadiumController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function getStadiums(Request $request)
     {
-        //
+    $this->validate($request, [
+        'club_name' => 'required|exists:locations,name',
+    ]);
+
+    $clubName = $request->input('club_name');
+
+    $stadiums = Stadium::where('club_name', $clubName)->get();
+
+    if ($stadiums->isEmpty()) {
+        return response()->json(['message' => 'No stadiums found in this club'], 404);
+    }
+
+    return response()->json(['stadiums' => $stadiums], 200);
     }
 
     /**

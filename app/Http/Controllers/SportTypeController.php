@@ -11,9 +11,10 @@ class SportTypeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function getSports()
     {
-        //
+        $Sport = Sport_type::all();
+        return response()->json(['Sports Type'=>$Sport],200);
     }
 
     /**
