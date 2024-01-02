@@ -19,7 +19,8 @@ return new class extends Migration
             $table->id();
             $table->dateTime('start_time')->nullable()->comment("Match start time");
             $table->dateTime('end_time')->nullable()->comment("Match end time");
-            $table->foreignIdFor(Team::class)->nullable()->constrained();
+            $table->foreignId('team1_id')->nullable()->constrained('teams');
+            $table->foreignId('team2_id')->nullable()->constrained('teams');
             $table->foreignIdFor(Club::class)->nullable()->constrained();
             $table->foreignIdFor(Location::class)->nullable()->constrained();
             $table->foreignIdFor(Sport_type::class)->nullable()->constrained();
