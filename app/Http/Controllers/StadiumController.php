@@ -12,7 +12,7 @@ class StadiumController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function getStadiums(Request $request)
+    public function index(Request $request)
     {
     $this->validate($request, [
         'Club_name' => 'required|exists:Locations,name',

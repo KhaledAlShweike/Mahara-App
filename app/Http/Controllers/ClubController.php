@@ -14,7 +14,7 @@ class ClubController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function getClub(Request $request)
+    public function index(Request $request)
     {
         $this->validate($request, [
             'Location_name' => 'required|exists:Locations,name',
