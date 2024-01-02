@@ -47,7 +47,7 @@ Route::get('/stadiam/{id}', [StadiumController::class, 'show']);
 Route::post('/ToTmatching', [TeamToTeamMatching::class, 'TeamtoteamMatching']);
 Route::post('/ToPmatching', [Teamtoplayer_Matching::class, 'TeamtoplayerMatching']);
 
-Route::get('/sports',[SportTypeController::class,'index']);
+Route::get('/sports',[SportTypeController::class,'getSports']);
 Route::get('/cities',[LocationController::class,'index']);
 Route::get('/clubs',[ClubController::class,'getClub']);
 Route::get('stadiums',[StadiumController::class,'getStadiums']);
