@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Pending_TeamtoTeam_matching;
+use App\Models\PendingTeamtoTeamMatching;
 use App\Models\Reservation;
 use App\Models\Team;
 use Illuminate\Http\Request;
@@ -53,7 +53,7 @@ class TeamtoTeamMatching extends Controller
 
             // Check if Teams match and add to pending Team to Team matching
             if ($this->checkTeamsMatch($matchingCriteria)) {
-                $pendingMatching = Pending_TeamtoTeam_matching::create($matchingCriteria);
+                $pendingMatching = PendingTeamtoTeamMatching::create($matchingCriteria);
 
                 return response()->json([
                     'message' => 'Matching process created successfully',

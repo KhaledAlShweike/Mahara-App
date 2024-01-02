@@ -10,6 +10,9 @@ class Notification extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['Type','Title','Content','Expire_date'];
+
+
     public function Player()
     {
         return $this->belongsToMany(Player::class);

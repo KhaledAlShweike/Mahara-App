@@ -11,7 +11,7 @@ class Team extends Model
 {
     use HasFactory;
 
-    protected $fillable =['name','SportType'];
+    protected $fillable =['name','Sport_type'];
 
     public function Players()
     {

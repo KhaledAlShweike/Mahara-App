@@ -11,6 +11,9 @@ class Reservation extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['start_date','end_date'];
+
+
     public function Archive()
     {
         return $this->hasOne(Archive::class);

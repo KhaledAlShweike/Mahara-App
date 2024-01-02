@@ -11,6 +11,10 @@ class Stadium extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['Stadium_type','Price','Discount'];
+
+
+
     public function Reservation()
     {
         return $this->belongsToMany(Reservation::class);

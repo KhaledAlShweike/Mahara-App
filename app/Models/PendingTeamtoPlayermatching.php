@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class PendingTeamtoPlayermatching extends Model
 {
     use HasFactory;
+
+    
 }

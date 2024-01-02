@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rank extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name','start_range','end_range'];
+
 }

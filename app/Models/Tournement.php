@@ -13,6 +13,9 @@ class Tournement extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name','Location','Max_teams','start_date','end_date','start_playing_hour','end_playing_hour'];
+
+
     public function Clubs()
     {
         return $this->hasMany(Club::class);
