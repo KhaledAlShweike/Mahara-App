@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rules', function (Blueprint $table) {
+        Schema::create('Rules', function (Blueprint $table) {
             $table->id();
-            $table->enum('Rule',['Player','app_admin','club_manager','Doctor'])->default('Player');
+            $table->enum('Rule',['Player','AppAdmin','ClubManager','Doctor'])->default('Player');
         });
     }
 
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rules');
+        Schema::dropIfExists('Rules');
     }
 };

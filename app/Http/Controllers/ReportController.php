@@ -35,7 +35,7 @@ class ReportController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Report $report)
+    public function show(Report $Report)
     {
         //
     }
@@ -43,7 +43,7 @@ class ReportController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Report $report)
+    public function edit(Report $Report)
     {
         //
     }
@@ -51,7 +51,7 @@ class ReportController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Report $report)
+    public function update(Request $request, Report $Report)
     {
         //
     }
@@ -59,7 +59,7 @@ class ReportController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Report $report)
+    public function destroy(Report $Report)
     {
         //
     }

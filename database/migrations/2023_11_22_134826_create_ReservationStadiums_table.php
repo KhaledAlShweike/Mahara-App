@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Reservation;
+use App\Models\Stadium;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,10 +13,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('club_sport', function (Blueprint $table) {
-           
-            $table->foreignId('sport_type_id')->references('id')->on('sport_types')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('club_id')->references('id')->on('clubs')->onDelete('cascade')->onUpdate('cascade');
+        Schema::create('ReservationStadiums', function (Blueprint $table) {
+            $table->foreignIdFor(Stadium::class)->nullable()->constrained('Stadiums');
+            $table->foreignIdFor(Reservation::class)->nullable()->constrained('Reservations');
         });
     }
 
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('club_sport');
+        Schema::dropIfExists('ReservationStadiums');
     }
 };

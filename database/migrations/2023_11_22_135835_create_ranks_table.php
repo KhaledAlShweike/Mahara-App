@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ranks', function (Blueprint $table) {
+        Schema::create('Ranks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->integer('start_range');
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ranks');
+        Schema::dropIfExists('Ranks');
     }
 };

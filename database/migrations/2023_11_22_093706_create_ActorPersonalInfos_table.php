@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('actor_personal_infos', function (Blueprint $table) {
+        Schema::create('ActorPersonalInfos', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->unsignedBigInteger('Rule_id');
-            $table->foreign('Rule_id')->references('id')->on('rules')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('Rule_id')->references('id')->on('Rules')->onDelete('cascade')->onUpdate('cascade');
             $table->dateTime('b_date')->nullable()->default(now());
             $table->enum('gender',['male','female']);
         });
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('actor_personal_infos');
+        Schema::dropIfExists('ActorPersonalInfos');
     }
 };

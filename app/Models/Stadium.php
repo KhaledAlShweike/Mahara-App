@@ -15,7 +15,7 @@ class Stadium extends Model
     {
         return $this->belongsToMany(Reservation::class);
     }
-    public function CLubs()
+    public function Clubs()
     {
         return $this->belongsToMany(Club::class);
     }

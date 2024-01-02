@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('club_stadium', function (Blueprint $table) {
-           
-            $table->foreignId('stadium_id')->references('id')->on('stadium')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('club_id')->references('id')->on('clubs')->onDelete('cascade')->onUpdate('cascade');
+        Schema::create('AppAdmins', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('personal_info_id');
+            $table->foreign('personal_info_id')->references('id')->on('ActorPersonalInfos')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('club_stadium');
+        Schema::dropIfExists('AppAdmins');
     }
 };

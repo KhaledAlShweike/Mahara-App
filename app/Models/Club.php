@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Sport_type;
+use App\Models\SportType;
 use App\Models\Stadium;
 use App\Models\Tournement;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,9 +23,9 @@ class Club extends Model
     {
         return $this->belongsToMany(Stadium::class);
     }
-    public function Sport_type()
+    public function SportType()
     {
-        return $this->belongsToMany(Sport_type::class);
+        return $this->belongsToMany(SportType::class);
     }
     public function Tournement()
     {

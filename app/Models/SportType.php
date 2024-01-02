@@ -6,7 +6,7 @@ use App\Models\Club;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sport_type extends Model
+class SportType extends Model
 {
     use HasFactory;
 

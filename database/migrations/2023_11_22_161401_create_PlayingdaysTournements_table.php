@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('team_tournement', function (Blueprint $table) {
+        Schema::create('PlayingDaysTournements', function (Blueprint $table) {
          
-            $table->foreignId('tournement_id')->references('id')->on('tournements')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('team_id')->references('id')->on('teams')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('Tournement_id')->references('id')->on('Tournements')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('Day_id')->references('id')->on('Days')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('team_tournement');
+        Schema::dropIfExists('PlayingDaysTournements');
     }
 };

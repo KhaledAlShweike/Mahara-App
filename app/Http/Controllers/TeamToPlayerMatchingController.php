@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Team_toPlayer_matching;
+use App\Models\TeamtoPlayermatching;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -35,7 +36,7 @@ class TeamToPlayerMatchingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Team_toPlayer_matching $team_toPlayer_matching)
+    public function show(TeamtoPlayermatching $Team_toPlayer_matching)
     {
         //
     }
@@ -43,7 +44,7 @@ class TeamToPlayerMatchingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Team_toPlayer_matching $team_toPlayer_matching)
+    public function edit(TeamtoPlayermatching $TeamtoPlayerMatching)
     {
         //
     }
@@ -51,7 +52,7 @@ class TeamToPlayerMatchingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Team_toPlayer_matching $team_toPlayer_matching)
+    public function update(Request $request, TeamtoPlayermatching $TeamtoPlayerMatching)
     {
         //
     }
@@ -59,7 +60,7 @@ class TeamToPlayerMatchingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Team_toPlayer_matching $team_toPlayer_matching)
+    public function destroy(TeamtoPlayermatching $TeamtoPlayerMatching)
     {
         //
     }

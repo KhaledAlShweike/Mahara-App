@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Pending_TeamtoPlayer_matching;
+use App\Models\PendingTeamtoPlayermatching;
 use App\Models\Reservation;
 use App\Models\Player;
 use App\Models\Team;
@@ -10,26 +11,26 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 
-class Teamtoplayer_Matching extends Controller
+class TeamtoPlayer_Matching extends Controller
 {
 
-    public function TeamtoplayerMatching(Request $request)
+    public function TeamtoPlayerMatching(Request $request)
     {
         $this->validate($request, [
             'start_time' => 'required|date_format:Y-m-d H:i:s',
             'end_time' => 'required|date_format:Y-m-d H:i:s|after:start_time',
-            'team_id' => 'required|exists:teams,id',
-            'player_id' => 'required|exists:Players,id',
-            'location' => 'required|exists:locations,name',
-            'sport_type' => 'required|exists:sport_types,name',
+            'Team_id' => 'required|exists:Teams,id',
+            'Player_id' => 'required|exists:Players,id',
+            'Location' => 'required|exists:Locations,name',
+            'SportType' => 'required|exists:SportTypes,name',
         ]);
 
         $startTime = $request->input('start_time');
         $endTime = $request->input('end_time');
-        $teamId = $request->input('team_id');
-        $playerId = $request->input('player_id');
-        $location = $request->input('location');
-        $sportType = $request->input('sport_type');
+        $TeamId = $request->input('Team_id');
+        $PlayerId = $request->input('Player_id');
+        $Location = $request->input('Location');
+        $sportType = $request->input('SportType');
 
         $availableReservations = Reservation::where(function ($query) use ($startTime, $endTime) {
             $query->where(function ($subQuery) use ($startTime, $endTime) {
@@ -39,36 +40,36 @@ class Teamtoplayer_Matching extends Controller
                 $subQuery->where('start_time', '<=', $startTime)
                     ->where('end_time', '>=', $endTime);
             });
-        })->doesntHave('Pending_teamtoplayer_matching')->doesntHave('PlayertoTeammatching')->get();
+        })->doesntHave('Pending_TeamtoPlayer_matching')->doesntHave('PlayertoTeammatching')->get();
 
-        foreach ($availableReservations as $reservation) {
+        foreach ($availableReservations as $Reservation) {
             $matchingCriteria = [
-                'team1_id' => $teamId,
-                'player_id' => $playerId,
-                'location' => $location,
-                'sport_type' => $sportType,
+                'Team1_id' => $TeamId,
+                'Player_id' => $PlayerId,
+                'Location' => $Location,
+                'SportType' => $sportType,
                 'start_time' => $startTime,
                 'end_time' => $endTime,
             ];
 
-            // Check if they match and add to pending tema to player matching
+            // Check if they match and add to pending tema to Player matching
             if ($this->checkTOPMatch($matchingCriteria)) {
-                $pendingMatching = Pending_TeamtoPlayer_matching::create($matchingCriteria);
+                $pendingMatching = PendingTeamtoPlayermatching::create($matchingCriteria);
 
                 return response()->json([
                     'message' => 'Matching process created successfully',
-                    'teams' => [
-                        'team_id' => $matchingCriteria['team_id'],
-                        'player_id' => $matchingCriteria['player-id'],
+                    'Teams' => [
+                        'Team_id' => $matchingCriteria['Team_id'],
+                        'Player_id' => $matchingCriteria['Player-id'],
                     ],
-                    'reservation' => [
-                        'start_time' => $reservation->start_time,
-                        'end_time' => $reservation->end_time,
-                        'club_id' => $reservation->club_id,
-                        'name' => $reservation->club_name,
-                        'address' => $reservation->address,
-                        'stadium_id' => $reservation->stadium_id,
-                        'sport_type' => $reservation->sport_type,
+                    'Reservation' => [
+                        'start_time' => $Reservation->start_time,
+                        'end_time' => $Reservation->end_time,
+                        'Club_id' => $Reservation->Club_id,
+                        'name' => $Reservation->Club_name,
+                        'address' => $Reservation->address,
+                        'Stadium_id' => $Reservation->Stadium_id,
+                        'SportType' => $Reservation->SportType,
                     ],
                     'pending_matching_id' => $pendingMatching->id,
                 ], 200);
@@ -82,21 +83,21 @@ class Teamtoplayer_Matching extends Controller
 
     private function checkTOPMatch($criteria)
     {
-        // Retrieve team and player information based on criteria
-        $team = Team::find($criteria['team_id']);
-        $player = Player::find($criteria['player_id']);
+        // Retrieve Team and Player information based on criteria
+        $Team = Team::find($criteria['Team_id']);
+        $Player = Player::find($criteria['Player_id']);
 
-        // Check if teams exist
-        if (!$team || !$player) {
+        // Check if Teams exist
+        if (!$Team || !$Player) {
             return false;
         }
 
-        // Check if they have the same location and sport type
+        // Check if they have the same Location and sport type
         return (
-            $team->location === $criteria['location'] &&
-            $team->sport_type === $criteria['sport_type'] &&
-            $player->location === $criteria['location'] &&
-            $player->sport_type === $criteria['sport_type']
+            $Team->Location === $criteria['Location'] &&
+            $Team->SportType === $criteria['SportType'] &&
+            $Player->Location === $criteria['Location'] &&
+            $Player->SportType === $criteria['SportType']
         );
     }
 }

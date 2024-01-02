@@ -2,30 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Api\V1\TeamToTeamMatching;
+use App\Http\Controllers\Api\V1\TeamtoTeamMatching;
 use App\Models\Pending_TeamtoTeam_matching;
 use App\Models\Team;
 use App\Models\Team_to_Team_matching;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class TeamToTeamMatchingController extends Controller
+class TeamtoTeamMatchingController extends Controller
 {
 
-    public function getTeamtoTeammatching(Request $request)
+    public function getTeamtoTeamMatching(Request $request)
     {
         $this->validate($request, [
-            'location_name' => 'required|exists:locations,name',
+            'Location_name' => 'required|exists:Locations,name',
         ]);
 
-        $locationName = $request->input('location_name');
-        $Teamtoteam = Team_to_Team_matching::where('location_name', $locationName)->get();
+        $LocationName = $request->input('Location_name');
+        $TeamtoTeam = Team_to_Team_matching::where('Location_name', $LocationName)->get();
 
-        if ($Teamtoteam->isEmpty()) {
-            return response()->json(['message' => 'No matching found in this location'], 404);
+        if ($TeamtoTeam->isEmpty()) {
+            return response()->json(['message' => 'No matching found in this Location'], 404);
         }
 
-        return response()->json(['Team to team matchs' => $Teamtoteam], 200);
+        return response()->json(['Team to Team matchs' => $TeamtoTeam], 200);
     }
 
     /**
@@ -47,7 +47,7 @@ class TeamToTeamMatchingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Team_to_Team_matching $team_to_Team_matching)
+    public function show(Team_to_Team_matching $Team_to_Team_matching)
     {
         //
     }
@@ -55,7 +55,7 @@ class TeamToTeamMatchingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Team_to_Team_matching $team_to_Team_matching)
+    public function edit(Team_to_Team_matching $Team_to_Team_matching)
     {
         //
     }
@@ -63,7 +63,7 @@ class TeamToTeamMatchingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Team_to_Team_matching $team_to_Team_matching)
+    public function update(Request $request, Team_to_Team_matching $Team_to_Team_matching)
     {
         //
     }
@@ -71,7 +71,7 @@ class TeamToTeamMatchingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Team_to_Team_matching $team_to_Team_matching)
+    public function destroy(Team_to_Team_matching $Team_to_Team_matching)
     {
         //
     }

@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Api\V1\Teamtoplayer_Matching;
-use App\Http\Controllers\Api\V1\TeamToTeamMatching;
+use App\Http\Controllers\Api\V1\TeamtoPlayer_Matching;
+use App\Http\Controllers\Api\V1\TeamtoTeamMatching;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ReservationController;
@@ -12,9 +12,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PlayerToTeamMatchingController;
 use App\Http\Controllers\SportTypeController;
-use App\Http\Controllers\TeamToTeamMatchingController;
+use App\Http\Controllers\TeamtoTeamMatchingController;
 use App\Models\Pending_TeamtoTeam_matching;
-use App\Models\Sport_type;
+use App\Models\SportType;
 use App\Models\Team_to_Team_matching;
 use App\Models\Team_toPlayer_matching;
 
@@ -30,27 +30,27 @@ use App\Models\Team_toPlayer_matching;
 */
 
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/login/club_manager', [AuthController::class, 'clubManagerLogin']);
-Route::post('/register', [AuthController::class, 'playerSignup']);
+Route::post('/login/ClubManager', [AuthController::class, 'ClubManagerLogin']);
+Route::post('/register', [AuthController::class, 'PlayerSignup']);
 Route::post('/logout', [AuthController::class, 'logout']);
-Route::get('/reservations', [ReservationController::class, 'index']);
+Route::get('/Reservations', [ReservationController::class, 'index']);
 
 
 Route::post('/signup', [AuthController::class, 'signup']);
 
 
-Route::post('/upload-image', [ImageController::class, 'upload']);
+Route::post('/upload-Image', [ImageController::class, 'upload']);
 
-Route::get('/clubs/{id}', [ClubController::class, 'show']);
+Route::get('/Clubs/{id}', [ClubController::class, 'show']);
 Route::get('/stadiam/{id}', [StadiumController::class, 'show']);
 
-Route::post('/ToTmatching', [TeamToTeamMatching::class, 'TeamtoteamMatching']);
-Route::post('/ToPmatching', [Teamtoplayer_Matching::class, 'TeamtoplayerMatching']);
+Route::post('/ToTmatching', [TeamtoTeamMatching::class, 'TeamtoTeamMatching']);
+Route::post('/ToPmatching', [TeamtoPlayer_Matching::class, 'TeamtoPlayerMatching']);
 
 Route::get('/sports',[SportTypeController::class,'getSports']);
 Route::get('/cities',[LocationController::class,'index']);
-Route::get('/clubs',[ClubController::class,'getClub']);
-Route::get('stadiums',[StadiumController::class,'getStadiums']);
+Route::get('/Clubs',[ClubController::class,'getClub']);
+Route::get('Stadiums',[StadiumController::class,'getStadiums']);
 Route::get('/P2Tmatches',[PlayerToTeamMatchingController::class,'getPlayertoTeammatching']);
-Route::get('/T2Tmatches',[TeamToTeamMatchingController::class,'getTeamtoTeammatching']);
+Route::get('/T2Tmatches',[TeamtoTeamMatchingController::class,'getTeamtoTeamMatching']);
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sport_type;
+use App\Models\SportType;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -13,7 +13,7 @@ class SportTypeController extends Controller
      */
     public function getSports()
     {
-        $Sport = Sport_type::all();
+        $Sport = SportType::all();
         return response()->json(['Sports Type'=>$Sport],200);
     }
 
@@ -36,7 +36,7 @@ class SportTypeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Sport_type $sport_type)
+    public function show(SportType $SportType)
     {
         //
     }
@@ -44,7 +44,7 @@ class SportTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sport_type $sport_type)
+    public function edit(SportType $SportType)
     {
         //
     }
@@ -52,7 +52,7 @@ class SportTypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Sport_type $sport_type)
+    public function update(Request $request, SportType $SportType)
     {
         //
     }
@@ -60,7 +60,7 @@ class SportTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sport_type $sport_type)
+    public function destroy(SportType $SportType)
     {
         //
     }

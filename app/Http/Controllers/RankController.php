@@ -35,7 +35,7 @@ class RankController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Rank $rank)
+    public function show(Rank $Rank)
     {
         //
     }
@@ -43,7 +43,7 @@ class RankController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Rank $rank)
+    public function edit(Rank $Rank)
     {
         //
     }
@@ -51,7 +51,7 @@ class RankController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Rank $rank)
+    public function update(Request $request, Rank $Rank)
     {
         //
     }
@@ -59,7 +59,7 @@ class RankController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Rank $rank)
+    public function destroy(Rank $Rank)
     {
         //
     }

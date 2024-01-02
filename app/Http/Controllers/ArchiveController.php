@@ -35,7 +35,7 @@ class ArchiveController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Archive $archive)
+    public function show(Archive $Archive)
     {
         //
     }
@@ -43,7 +43,7 @@ class ArchiveController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Archive $archive)
+    public function edit(Archive $Archive)
     {
         //
     }
@@ -51,7 +51,7 @@ class ArchiveController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Archive $archive)
+    public function update(Request $request, Archive $Archive)
     {
         //
     }
@@ -59,7 +59,7 @@ class ArchiveController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Archive $archive)
+    public function destroy(Archive $Archive)
     {
         //
     }

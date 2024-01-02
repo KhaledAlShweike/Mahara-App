@@ -22,16 +22,16 @@ class Location extends Model
     {
         return $this->hasMany(Tournement::class);
     }
-    public function Pending_TeamtoTeam_matching()
+    public function PendingTeamtoTeamMatching()
     {
-        return $this->hasMany(Pending_TeamtoTeam_matching::class);
+        return $this->hasMany(PendingTeamtoTeamMatching::class);
     }
-    public function Player_to_Team_matching()
+    public function PlayertoTeamMatching()
     {
-        return $this->hasMany(Player_toTeam_matching::class);
+        return $this->hasMany(PlayertoTeamMatching::class);
     }
-    public function Team_to_Team_matching()
+    public function TeamtoTeamMatching()
     {
-        return $this->hasMany(Team_to_Team_matching::class);
+        return $this->hasMany(TeamtoTeamMatching::class);
     }
 }

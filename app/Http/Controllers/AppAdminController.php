@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\App_admin;
+use App\Models\AppAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -35,7 +35,7 @@ class AppAdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(App_admin $app_admin)
+    public function show(AppAdmin $AppAdmin)
     {
         //
     }
@@ -43,7 +43,7 @@ class AppAdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(App_admin $app_admin)
+    public function edit(AppAdmin $AppAdmin)
     {
         //
     }
@@ -51,7 +51,7 @@ class AppAdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, App_admin $app_admin)
+    public function update(Request $request, AppAdmin $AppAdmin)
     {
         //
     }
@@ -59,7 +59,7 @@ class AppAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(App_admin $app_admin)
+    public function destroy(AppAdmin $AppAdmin)
     {
         //
     }

@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Club_manager;
+use App\Models\ClubManager;
 use App\Models\Location;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clubs', function (Blueprint $table) {
+        Schema::create('Clubs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('address');
             $table->string('phone_number');
-            $table->foreignIdFor(Club_manager::class)->constrained()->nullable()->constrained();
-            $table->foreignIdFor(Location::class)->constrained()->nullable()->constrained();
+            $table->foreignIdFor(ClubManager::class)->nullable()->constrained('ClubManagers');
+            $table->foreignIdFor(Location::class)->nullable()->constrained('Locations');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clubs');
+        Schema::dropIfExists('Clubs');
     }
 };

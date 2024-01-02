@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Client\Request;
 
-class Pending_TeamtoTeam_matching extends Model
+class PendingTeamtoTeamMatching extends Model
 {
     use HasFactory;
     public function Location()

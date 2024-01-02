@@ -35,7 +35,7 @@ class DayController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Day $day)
+    public function show(Day $Day)
     {
         //
     }
@@ -43,7 +43,7 @@ class DayController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Day $day)
+    public function edit(Day $Day)
     {
         //
     }
@@ -51,7 +51,7 @@ class DayController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Day $day)
+    public function update(Request $request, Day $Day)
     {
         //
     }
@@ -59,7 +59,7 @@ class DayController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Day $day)
+    public function destroy(Day $Day)
     {
         //
     }

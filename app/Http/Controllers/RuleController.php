@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 
 class RuleController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */

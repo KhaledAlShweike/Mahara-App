@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Actor_personal_info;
+use App\Models\ActorPersonalInfo;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,25 +12,25 @@ class ActorPersonalInfosTableSeeder extends Seeder
     {
         // Insert 25 Player records
         for ($i = 1; $i <= 20; $i++) {
-            Actor_Personal_Info::create([
+            ActorPersonalInfo::create([
                 'first_name' => 'Player'.$i,
                 'last_name' => 'Lastname'.$i,
                 'Rule' => 'Player',
                 'phone_number' => '12345678'.$i,
-                'email' => 'player'.$i.'@example.com',
+                'email' => 'Player'.$i.'@example.com',
                 'password' => bcrypt('password123'),
             ]);
         }
 
         // Insert Club Manager record
-        Actor_Personal_Info::create([
+        ActorPersonalInfo::create([
             'first_name' => 'Club',
             'last_name' => 'Manager',
-            'Rule' => 'club_manager',
+            'Rule' => 'ClubManager',
             'phone_number' => '123456789',  // Provide a default phone number
             'code' => '123456',
-            'email' => 'club.manager@example.com',
-            'password' => bcrypt('clubpassword'),
+            'email' => 'Club.manager@example.com',
+            'password' => bcrypt('Clubpassword'),
         ]);
 
         $this->command->info('ActorPersonalInfos table seeded!');

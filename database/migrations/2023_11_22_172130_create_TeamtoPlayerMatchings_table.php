@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('team_to_player_matchings', function (Blueprint $table) {
+        Schema::create('TeamtoPlayerMatchings', function (Blueprint $table) {
             $table->id();
             $table->string('position');
-            $table->foreignIdFor(Reservation::class)->nullable()->constrained();
-            $table->foreignIdFor(Team::class)->nullable()->constrained();
+            $table->foreignIdFor(Reservation::class)->nullable()->constrained('Reservations');
+            $table->foreignIdFor(Team::class)->nullable()->constrained('Teams');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('team_to_player_matchings');
+        Schema::dropIfExists('TeamtoPlayerMatchings');
     }
 };

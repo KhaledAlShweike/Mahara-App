@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Sport_type;
+use App\Models\SportType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,9 +12,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('position', function (Blueprint $table) {
+        Schema::create('Position', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Sport_type::class)->constrained()->nullable();
+            $table->foreignIdFor(SportType::class)->constrained('SportTypes')->nullable();
             $table->enum('Position',['Football','Basketball']);
             $table->enum('Football',['Attacker', ' Gooal Keeper ', ' Defender ', 'Midfielder']);
             $table->enum('Basketball', ['Center',' Power forward', 'Small forward',' Point guard', 'Shooting guard']);
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_position_');
+        Schema::dropIfExists('Position');
     }
 };

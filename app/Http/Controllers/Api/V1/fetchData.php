@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Location;
-use App\Models\Sport_type;
+use App\Models\SportType;
 use Auth;
 use Illuminate\Routing\Controller;
 

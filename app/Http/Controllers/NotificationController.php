@@ -35,7 +35,7 @@ class NotificationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Notification $notification)
+    public function show(Notification $Notification)
     {
         //
     }
@@ -43,7 +43,7 @@ class NotificationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Notification $notification)
+    public function edit(Notification $Notification)
     {
         //
     }
@@ -51,7 +51,7 @@ class NotificationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Notification $notification)
+    public function update(Request $request, Notification $Notification)
     {
         //
     }
@@ -59,7 +59,7 @@ class NotificationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Notification $notification)
+    public function destroy(Notification $Notification)
     {
         //
     }

@@ -35,7 +35,7 @@ class TournementController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tournement $tournement)
+    public function show(Tournement $Tournement)
     {
         //
     }
@@ -43,7 +43,7 @@ class TournementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tournement $tournement)
+    public function edit(Tournement $Tournement)
     {
         //
     }
@@ -51,7 +51,7 @@ class TournementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tournement $tournement)
+    public function update(Request $request, Tournement $Tournement)
     {
         //
     }
@@ -59,7 +59,7 @@ class TournementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tournement $tournement)
+    public function destroy(Tournement $Tournement)
     {
         //
     }

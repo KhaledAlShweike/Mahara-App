@@ -15,18 +15,18 @@ class StadiumController extends Controller
     public function getStadiums(Request $request)
     {
     $this->validate($request, [
-        'club_name' => 'required|exists:locations,name',
+        'Club_name' => 'required|exists:Locations,name',
     ]);
 
-    $clubName = $request->input('club_name');
+    $ClubName = $request->input('Club_name');
 
-    $stadiums = Stadium::where('club_name', $clubName)->get();
+    $Stadiums = Stadium::where('Club_name', $ClubName)->get();
 
-    if ($stadiums->isEmpty()) {
-        return response()->json(['message' => 'No stadiums found in this club'], 404);
+    if ($Stadiums->isEmpty()) {
+        return response()->json(['message' => 'No Stadiums found in this Club'], 404);
     }
 
-    return response()->json(['stadiums' => $stadiums], 200);
+    return response()->json(['Stadiums' => $Stadiums], 200);
     }
 
     /**
@@ -50,10 +50,10 @@ class StadiumController extends Controller
      */
     public function show($id)
     {
-        $stadium = Stadium::with(['image', 'image.image_path'])->find($id);
+        $Stadium = Stadium::with(['Image', 'Image.Image_path'])->find($id);
 
-        if ($stadium) {
-            return response()->json(['data' => $stadium], 200);
+        if ($Stadium) {
+            return response()->json(['data' => $Stadium], 200);
         } else {
             return response()->json(['message' => 'Stadium not found'], 404);
         }
@@ -61,7 +61,7 @@ class StadiumController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Stadium $stadium)
+    public function edit(Stadium $Stadium)
     {
         //
     }
@@ -69,7 +69,7 @@ class StadiumController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Stadium $stadium)
+    public function update(Request $request, Stadium $Stadium)
     {
         //
     }
@@ -77,7 +77,7 @@ class StadiumController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Stadium $stadium)
+    public function destroy(Stadium $Stadium)
     {
         //
     }

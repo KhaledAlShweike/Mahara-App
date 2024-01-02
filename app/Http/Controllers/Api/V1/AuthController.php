@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Actor_personal_info;
+use App\Models\ActorPersonalInfo;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Carbon;
@@ -27,13 +27,13 @@ class AuthController extends Controller
         function register(Request $req){
             $data = $req->all();
             // if($data["utype"]==1){
-            $user = new Actor_personal_info();
+            $user = new ActorPersonalInfo();
             $user->first_name = $data['first_name'];
             $user->last_name = $data['last_name'];
             $user->phone_number=$data['phone_number'];
             $user->email= $data['email'];
             $user->password= Hash::make($data['password']);
-            $user->location=$data['location'];
+            $user->Location=$data['Location'];
             $user->Rule = $data['Rule'];
             $user->gender=$data['gender'];
             $user->b_date = $data['b_date'];
@@ -51,7 +51,7 @@ class AuthController extends Controller
         {
             $credentials = $request->only('phone_number', 'password');
     
-            $user = Actor_personal_info::where('phone_number', $credentials['phone_number'])->first();
+            $user = ActorPersonalInfo::where('phone_number', $credentials['phone_number'])->first();
     
             if (!$user || !Hash::check($credentials['password'], $user->password)) {
                 return response()->json(['error' => 'Unauthorized'], 401);

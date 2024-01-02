@@ -9,7 +9,7 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'image_path'];
+    protected $fillable = ['title', 'Image_path'];
 
 
     public function Club()

@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('alterimage', function (Blueprint $table) {
+        Schema::create('AlterImage', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Player::class)->nullable()->constrained();
-            $table->foreignIdFor(Image::class)->nullable()->constrained();
+            $table->foreignIdFor(Player::class)->nullable()->constrained('Players');
+            $table->foreignIdFor(Image::class)->nullable()->constrained('Images');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('alterimage_');
+        Schema::dropIfExists('AlterImage');
     }
 };

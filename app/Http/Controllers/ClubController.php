@@ -17,17 +17,17 @@ class ClubController extends Controller
     public function getClub(Request $request)
     {
         $this->validate($request, [
-            'location_name' => 'required|exists:locations,name',
+            'Location_name' => 'required|exists:Locations,name',
         ]);
 
-        $locationName = $request->input('location_name');
-        $clubs = Club::where('location', $locationName)->get();
+        $LocationName = $request->input('Location_name');
+        $Clubs = Club::where('Location', $LocationName)->get();
 
-        if ($clubs->isEmpty()) {
-            return response()->json(['message' => 'No clubs found in this location'], 404);
+        if ($Clubs->isEmpty()) {
+            return response()->json(['message' => 'No Clubs found in this Location'], 404);
         }
 
-        return response()->json(['clubs' => $clubs], 200);
+        return response()->json(['Clubs' => $Clubs], 200);
     }
 
     /**
@@ -51,10 +51,10 @@ class ClubController extends Controller
      */
     public function show($id)
     {
-        $club = Club::with(['image', 'image.image_path'])->find($id);
+        $Club = Club::with(['Image', 'Image.Image_path'])->find($id);
 
-        if ($club) {
-            return response()->json(['data' => $club], 200);
+        if ($Club) {
+            return response()->json(['data' => $Club], 200);
         } else {
             return response()->json(['message' => 'Club not found'], 404);
         }
@@ -63,7 +63,7 @@ class ClubController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Club $club)
+    public function edit(Club $Club)
     {
         //
     }
@@ -71,7 +71,7 @@ class ClubController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Club $club)
+    public function update(Request $request, Club $Club)
     {
         //
     }
@@ -79,7 +79,7 @@ class ClubController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Club $club)
+    public function destroy(Club $Club)
     {
         //
     }

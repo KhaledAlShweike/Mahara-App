@@ -13,17 +13,17 @@ class PlayerToTeamMatchingController extends Controller
     public function getPlayertoTeammatching(Request $request)
     {
         $this->validate($request, [
-            'location_name' => 'required|exists:locations,name',
+            'Location_name' => 'required|exists:Locations,name',
         ]);
 
-        $locationName = $request->input('location_name');
-        $Playertoteam = Player_toTeam_matching::where('location_name', $locationName)->get();
+        $LocationName = $request->input('Location_name');
+        $PlayertoTeam = Player_toTeam_matching::where('Location_name', $LocationName)->get();
 
-        if ($Playertoteam->isEmpty()) {
-            return response()->json(['message' => 'No matching found in this location'], 404);
+        if ($PlayertoTeam->isEmpty()) {
+            return response()->json(['message' => 'No matching found in this Location'], 404);
         }
 
-        return response()->json(['player to team matchs' => $Playertoteam], 200);
+        return response()->json(['Player to Team matchs' => $PlayertoTeam], 200);
     }
 
     
@@ -44,7 +44,7 @@ class PlayerToTeamMatchingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Player_toTeam_matching $player_toTeam_matching)
+    public function show(Player_toTeam_matching $Player_toTeam_matching)
     {
         //
     }
@@ -52,7 +52,7 @@ class PlayerToTeamMatchingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Player_toTeam_matching $player_toTeam_matching)
+    public function edit(Player_toTeam_matching $Player_toTeam_matching)
     {
         //
     }
@@ -60,7 +60,7 @@ class PlayerToTeamMatchingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Player_toTeam_matching $player_toTeam_matching)
+    public function update(Request $request, Player_toTeam_matching $Player_toTeam_matching)
     {
         //
     }
@@ -68,7 +68,7 @@ class PlayerToTeamMatchingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Player_toTeam_matching $player_toTeam_matching)
+    public function destroy(Player_toTeam_matching $Player_toTeam_matching)
     {
         //
     }

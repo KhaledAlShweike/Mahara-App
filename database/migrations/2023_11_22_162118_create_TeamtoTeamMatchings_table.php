@@ -2,7 +2,7 @@
 
 use App\Models\Club;
 use App\Models\Location;
-use App\Models\Sport_type;
+use App\Models\SportType;
 use App\Models\Team;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,15 +15,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('team_to__team_matchings', function (Blueprint $table) {
+        Schema::create('TeamtoTeamMatchings', function (Blueprint $table) {
             $table->id();
             $table->dateTime('start_time')->nullable()->comment("Match start time");
             $table->dateTime('end_time')->nullable()->comment("Match end time");
-            $table->foreignId('team1_id')->nullable()->constrained('teams');
-            $table->foreignId('team2_id')->nullable()->constrained('teams');
-            $table->foreignIdFor(Club::class)->nullable()->constrained();
-            $table->foreignIdFor(Location::class)->nullable()->constrained();
-            $table->foreignIdFor(Sport_type::class)->nullable()->constrained();
+            $table->foreignId('Team1_id')->nullable()->constrained('Teams');
+            $table->foreignId('Team2_id')->nullable()->constrained('Teams');
+            $table->foreignIdFor(Club::class)->nullable()->constrained('Clubs');
+            $table->foreignIdFor(Location::class)->nullable()->constrained('Locations');
+            $table->foreignIdFor(SportType::class)->nullable()->constrained('SportTypes');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('team_to__team_matchings');
+        Schema::dropIfExists('TeamtoTeamMatchings');
     }
 };

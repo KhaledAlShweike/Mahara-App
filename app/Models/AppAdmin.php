@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Club_manager extends Model
+class AppAdmin extends Model
 {
     use HasFactory;
-
-    public function Actor_personal_info()
+    public function ActorPersonalInfo()
     {
-        return $this->belongsTo(Actor_personal_info::class);
+        return $this->belongsTo(ActorPersonalInfo::class);
     }
 }

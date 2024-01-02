@@ -36,7 +36,7 @@ class LocationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Location $location)
+    public function show(Location $Location)
     {
         //
     }
@@ -44,7 +44,7 @@ class LocationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Location $location)
+    public function edit(Location $Location)
     {
         //
     }
@@ -52,7 +52,7 @@ class LocationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Location $location)
+    public function update(Request $request, Location $Location)
     {
         //
     }
@@ -60,7 +60,7 @@ class LocationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Location $location)
+    public function destroy(Location $Location)
     {
         //
     }

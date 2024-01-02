@@ -35,7 +35,7 @@ class PlayerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Player $player)
+    public function show(Player $Player)
     {
         //
     }
@@ -43,7 +43,7 @@ class PlayerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Player $player)
+    public function edit(Player $Player)
     {
         //
     }
@@ -51,7 +51,7 @@ class PlayerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Player $player)
+    public function update(Request $request, Player $Player)
     {
         //
     }
@@ -59,7 +59,7 @@ class PlayerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Player $player)
+    public function destroy(Player $Player)
     {
         //
     }

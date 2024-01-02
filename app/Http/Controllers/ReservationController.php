@@ -13,9 +13,9 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservations = Reservation::all();
+        $Reservations = Reservation::all();
 
-        return response()->json(['reservations' => $reservations]);
+        return response()->json(['Reservations' => $Reservations]);
     }
 
     /**
@@ -37,7 +37,7 @@ class ReservationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Reservation $reservation)
+    public function show(Reservation $Reservation)
     {
         //
     }
@@ -45,7 +45,7 @@ class ReservationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Reservation $reservation)
+    public function edit(Reservation $Reservation)
     {
         //
     }
@@ -53,7 +53,7 @@ class ReservationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Reservation $reservation)
+    public function update(Request $request, Reservation $Reservation)
     {
         //
     }
@@ -61,7 +61,7 @@ class ReservationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Reservation $reservation)
+    public function destroy(Reservation $Reservation)
     {
         //
     }

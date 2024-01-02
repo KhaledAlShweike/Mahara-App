@@ -1,5 +1,8 @@
+
 <?php
 
+use App\Models\Team;
+use App\Models\Tournement;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,9 +14,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Locations', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+        Schema::create('TeamTournements', function (Blueprint $table) {
+            $table->foreignIdFor(Tournement::class)->nullable()->constrained('Tournements');
+            $table->foreignIdFor(Team::class)->nullable()->constrained('Teams');
         });
     }
 
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Locations');
+        Schema::dropIfExists('TeamTournements');
     }
 };

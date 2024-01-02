@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Club_manager;
+use App\Models\ClubManager;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -35,7 +35,7 @@ class ClubManagerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Club_manager $club_manager)
+    public function show(ClubManager $ClubManager)
     {
         //
     }
@@ -43,7 +43,7 @@ class ClubManagerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Club_manager $club_manager)
+    public function edit(ClubManager $ClubManager)
     {
         //
     }
@@ -51,7 +51,7 @@ class ClubManagerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Club_manager $club_manager)
+    public function update(Request $request, ClubManager $ClubManager)
     {
         //
     }
@@ -59,7 +59,7 @@ class ClubManagerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Club_manager $club_manager)
+    public function destroy(ClubManager $ClubManager)
     {
         //
     }

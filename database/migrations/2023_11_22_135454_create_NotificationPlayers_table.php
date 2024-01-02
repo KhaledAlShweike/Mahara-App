@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notification_player', function (Blueprint $table) {
+        Schema::create('NotificationPlayers', function (Blueprint $table) {
            $table->foreignIdFor(Player::class)->nullable()->constrained();
            $table->foreignIdFor(Notification::class)->nullable()->constrained();
         });
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notification_player');
+        Schema::dropIfExists('NotificationPlayers');
     }
 };

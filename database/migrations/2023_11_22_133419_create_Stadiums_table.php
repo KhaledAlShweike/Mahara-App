@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\SportType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,10 +12,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('app_admins', function (Blueprint $table) {
+        Schema::create('Stadiums', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('personal_info_id');
-            $table->foreign('personal_info_id')->references('id')->on('actor_personal_infos')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('Stadium_type');
+            $table->integer('price');
+            $table->float('discount');
+            $table->foreignIdFor(SportType::class)->nullable()->constrained('SportTypes');
+
         });
     }
 
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('app_admins');
+        Schema::dropIfExists('Stadiums');
     }
 };

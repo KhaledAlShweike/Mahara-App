@@ -6,7 +6,7 @@ use App\Models\Location;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Team_to_Team_matching extends Model
+class TeamtoTeamMatching extends Model
 {
     use HasFactory;
 

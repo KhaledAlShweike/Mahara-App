@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Actor_personal_info;
-use App\Models\Rule;
+use App\Models\ActorPersonalInfo;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -20,7 +19,7 @@ class ActorPersonalInfoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Actor_personal_info $actor_personal)
+    public function create()
     {
     }
 
@@ -35,22 +34,22 @@ class ActorPersonalInfoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Actor_personal_info $actor_personal_info)
+    public function show()
     {
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Actor_personal_info $actor_personal_info)
+    public function edit()
     {
         //
     }
 
-    public function update(Request $request, Actor_personal_info $actor_personal_info)
+    public function update(Request $request,ActorPersonalInfo $ActorPersonalInfo ) 
     {
 
-        $actor = Actor_personal_info::find('id');
+        $actor = ActorPersonalInfo::get('id');
         if ($actor) {
             $actor->update([
                 'first_name' => $request->first_name,
@@ -70,7 +69,7 @@ class ActorPersonalInfoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Actor_personal_info $actor_personal_info)
+    public function destroy()
     {
         //
     }

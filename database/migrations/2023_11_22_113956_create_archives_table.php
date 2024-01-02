@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('archives', function (Blueprint $table) {
+        Schema::create('Archives', function (Blueprint $table) {
             $table->id();
             $table->float('Final_resault');
             $table->foreignIdFor(Reservation::class)->nullable()->constrained();
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('archives');
+        Schema::dropIfExists('Archives');
     }
 };

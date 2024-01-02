@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pending_TeamtoTeam_matching;
+use App\Models\PendingTeamtoTeamMatching;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -36,7 +37,7 @@ class PendingTeamtoTeamMatchingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pending_TeamtoTeam_matching $pending_TeamtoTeam_matching)
+    public function show(PendingTeamtoTeamMatching $PendingTeamtoTeamMatching)
     {
         //
     }
@@ -44,7 +45,7 @@ class PendingTeamtoTeamMatchingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pending_TeamtoTeam_matching $pending_TeamtoTeam_matching)
+    public function edit(PendingTeamtoTeamMatching $PendingTeamtoTeamMatching)
     {
         //
     }
@@ -52,7 +53,7 @@ class PendingTeamtoTeamMatchingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pending_TeamtoTeam_matching $pending_TeamtoTeam_matching)
+    public function update(Request $request, PendingTeamtoTeamMatching $PendingTeamtoTeamMatching)
     {
         //
     }
@@ -60,7 +61,7 @@ class PendingTeamtoTeamMatchingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pending_TeamtoTeam_matching $pending_TeamtoTeam_matching)
+    public function destroy(PendingTeamtoTeamMatching $PendingTeamtoTeamMatching)
     {
         //
     }

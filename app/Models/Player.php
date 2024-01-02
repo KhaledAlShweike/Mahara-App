@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Actor_personal_info;
+use App\Models\ActorPersonalInfo;
 use App\Models\Archive;
 use App\Models\Notification;
 use App\Models\Reservation;
@@ -14,9 +14,9 @@ class Player extends Model
 {
     use HasFactory;
 
-    public function Actor_personal_info()
+    public function ActorPersonalInfo()
     {
-        return $this->belongsTo(Actor_personal_info::class);
+        return $this->belongsTo(ActorPersonalInfo::class);
     }
     
     public function Reservation()

@@ -8,28 +8,28 @@ use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class TeamToTeamMatching extends Controller
+class TeamtoTeamMatching extends Controller
 {
-    public function TeamtoteamMatching(Request $request)
+    public function TeamtoTeamMatching(Request $request)
     {
         // Validation 
         $this->validate($request, [
             'start_time' => 'date_format:Y-m-d H:i:s',
             'end_time' => 'date_format:Y-m-d H:i:s|after:start_time',
-            'team1_id' => 'required|exists:teams,id',
-            'team2_id' => 'required|exists:teams,id|different:team1_id',
-            'location' => 'required|exists:locations,name',
-            'sport_type' => 'required|exists:sport_types,name',
+            'Team1_id' => 'required|exists:Teams,id',
+            'Team2_id' => 'required|exists:Teams,id|different:Team1_id',
+            'Location' => 'required|exists:Locations,name',
+            'SportType' => 'required|exists:SportTypes,name',
         ]);
 
         $startTime = $request->input('start_time');
         $endTime = $request->input('end_time');
-        $team1Id = $request->input('team1_id');
-        $team2Id = $request->input('team2_id');
-        $location = $request->input('location');
-        $sportType = $request->input('sport_type');
+        $Team1Id = $request->input('Team1_id');
+        $Team2Id = $request->input('Team2_id');
+        $Location = $request->input('Location');
+        $sportType = $request->input('SportType');
 
-        // Search for available reservations within the specified time range
+        // Search for available Reservations within the specified time range
         $availableReservations = Reservation::where(function ($query) use ($startTime, $endTime) {
             $query->where(function ($subQuery) use ($startTime, $endTime) {
                 $subQuery->where('start_time', '>=', $startTime)
@@ -40,35 +40,35 @@ class TeamToTeamMatching extends Controller
             });
         })->doesntHave('Pending_TeamtoTeam_matchings')->doesntHave('Team_to_Team_matching')->get();
 
-        // Perform team matching logic based on available reservations
-        foreach ($availableReservations as $reservation) {
+        // Perform Team matching logic based on available Reservations
+        foreach ($availableReservations as $Reservation) {
             $matchingCriteria = [
-                'team1_id' => $team1Id,
-                'team2_id' => $team2Id,
-                'location' => $location,
-                'sport_type' => $sportType,
+                'Team1_id' => $Team1Id,
+                'Team2_id' => $Team2Id,
+                'Location' => $Location,
+                'SportType' => $sportType,
                 'start_time' => $startTime,
                 'end_time' => $endTime,
             ];
 
-            // Check if teams match and add to pending team to team matching
+            // Check if Teams match and add to pending Team to Team matching
             if ($this->checkTeamsMatch($matchingCriteria)) {
                 $pendingMatching = Pending_TeamtoTeam_matching::create($matchingCriteria);
 
                 return response()->json([
                     'message' => 'Matching process created successfully',
-                    'teams' => [
-                        'team1_id' => $matchingCriteria['team1_id'],
-                        'team2_id' => $matchingCriteria['team2_id'],
+                    'Teams' => [
+                        'Team1_id' => $matchingCriteria['Team1_id'],
+                        'Team2_id' => $matchingCriteria['Team2_id'],
                     ],
-                    'reservation' => [
-                        'start_time' => $reservation->start_time,
-                        'end_time' => $reservation->end_time,
-                        'club_id' => $reservation->club_id,
-                        'name' => $reservation->club_name,
-                        'address' => $reservation->address,
-                        'stadium_id' => $reservation->stadium_id,
-                        'sport_type' => $reservation->sport_type,
+                    'Reservation' => [
+                        'start_time' => $Reservation->start_time,
+                        'end_time' => $Reservation->end_time,
+                        'Club_id' => $Reservation->Club_id,
+                        'name' => $Reservation->Club_name,
+                        'address' => $Reservation->address,
+                        'Stadium_id' => $Reservation->Stadium_id,
+                        'SportType' => $Reservation->SportType,
                     ],
                     'pending_matching_id' => $pendingMatching->id,
                 ], 200);
@@ -80,21 +80,21 @@ class TeamToTeamMatching extends Controller
 
     private function checkTeamsMatch($criteria)
     {
-        // Retrieve team information based on criteria
-        $team1 = Team::find($criteria['team1_id']);
-        $team2 = Team::find($criteria['team2_id']);
+        // Retrieve Team information based on criteria
+        $Team1 = Team::find($criteria['Team1_id']);
+        $Team2 = Team::find($criteria['Team2_id']);
 
-        // Check if teams exist
-        if (!$team1 || !$team2) {
+        // Check if Teams exist
+        if (!$Team1 || !$Team2) {
             return false;
         }
 
-        // Check if teams have the same location and sport type
+        // Check if Teams have the same Location and sport type
         return (
-            $team1->location === $criteria['location'] &&
-            $team1->sport_type === $criteria['sport_type'] &&
-            $team2->location === $criteria['location'] &&
-            $team2->sport_type === $criteria['sport_type']
+            $Team1->Location === $criteria['Location'] &&
+            $Team1->SportType === $criteria['SportType'] &&
+            $Team2->Location === $criteria['Location'] &&
+            $Team2->SportType === $criteria['SportType']
         );
     }
 }
