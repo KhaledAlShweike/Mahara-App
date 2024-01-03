@@ -26,19 +26,19 @@ class ActorPersonalInfo extends Model
         'code',
         'b_date'
     ];
-    public function AppAdmin()
+    public function AppAdmins()
     {
         return $this->hasOne(AppAdmin::class);
     }
-    public function Doctor()
+    public function Doctors()
     {
         return $this->hasOne(Doctor::class);
     }
-    public function ClubManager()
+    public function ClubManagers()
     {
         return $this->hasOne(ClubManager::class);
     }
-    public function Rule()
+    public function Rules()
     {
         return $this->hasMany(Rule::class);
     }

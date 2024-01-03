@@ -12,11 +12,11 @@ class Archive extends Model
 
     protected $fillable=['Final_result'];
 
-    public function Reservation()
+    public function Reservations()
     {
         return $this->belongsTo(Reservation::class);
     }
-    public function Player()
+    public function Players()
     {
         return $this->belongsToMany(Player::class);
     }

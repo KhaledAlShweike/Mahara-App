@@ -13,7 +13,7 @@ class Notification extends Model
     protected $fillable = ['Type','Title','Content','Expire_date'];
 
 
-    public function Player()
+    public function Players()
     {
         return $this->belongsToMany(Player::class);
     }

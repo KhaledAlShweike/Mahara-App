@@ -15,7 +15,7 @@ class Stadium extends Model
 
 
 
-    public function Reservation()
+    public function Reservations()
     {
         return $this->belongsToMany(Reservation::class);
     }
@@ -24,7 +24,7 @@ class Stadium extends Model
         return $this->belongsToMany(Club::class);
     }
 
-    public function Image()
+    public function Images()
     {
         return $this->hasMany(Image::class,'id','price');
     }

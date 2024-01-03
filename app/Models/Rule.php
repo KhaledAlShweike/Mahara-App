@@ -13,7 +13,7 @@ class Rule extends Model
     protected $fillable = ['Rule_type'];
 
 
-    public function ActorPersonalInfo()
+    public function ActorPersonalInfos()
     {
         return $this->belongsTo(ActorPersonalInfo::class);
     }

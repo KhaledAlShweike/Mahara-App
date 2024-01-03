@@ -11,7 +11,7 @@ class Day extends Model
     use HasFactory;
     protected $fillable = ['name'];
 
-    public function Tournement()
+    public function Tournements()
     {
         return $this->belongsToMany(Tournement::class);
     }

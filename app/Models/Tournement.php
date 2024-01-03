@@ -28,7 +28,7 @@ class Tournement extends Model
     {
         return $this->belongsToMany(Day::class);
     }
-    public function Location()
+    public function Locations()
     {
         return $this->belongsTo(Location::class);
     }

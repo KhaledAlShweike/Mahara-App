@@ -17,7 +17,7 @@ class Team extends Model
     {
         return $this->belongsToMany(Player::class);
     }
-    public function Tournement()
+    public function Tournements()
     {
         return $this->belongsToMany(Tournement::class);
     }

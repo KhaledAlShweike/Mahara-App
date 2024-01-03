@@ -15,23 +15,20 @@ class Club extends Model
     // Additional details
     protected $fillable = ['name', 'address', 'phone_number'];
 
-    public function Locations()
-    {
-        return $this->belongsToMany(Location::class);
-    }
-    public function Stadium()
+   
+    public function Stadiums()
     {
         return $this->belongsToMany(Stadium::class);
     }
-    public function SportType()
+    public function SportTypes()
     {
         return $this->belongsToMany(SportType::class);
     }
-    public function Tournement()
+    public function Tournements()
     {
         return $this->belongsTo(Tournement::class);
     }
-    public function Location()
+    public function Locations()
     {
         return $this->belongsTo(Location::class);
     }

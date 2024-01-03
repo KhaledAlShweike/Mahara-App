@@ -14,15 +14,15 @@ class Reservation extends Model
     protected $fillable = ['start_date','end_date'];
 
 
-    public function Archive()
+    public function Archives()
     {
         return $this->hasOne(Archive::class);
     }
-    public function Player()
+    public function Players()
     {
         return $this->belongsToMany(Player::class);
     }
-    public function Stadium()
+    public function Stadiums()
     {
         return $this->belongsToMany(Stadium::class);
     }

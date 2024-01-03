@@ -10,7 +10,7 @@ class TeamtoTeamMatching extends Model
 {
     use HasFactory;
 
-    public function Location()
+    public function Locations()
     {
         return $this->belongsTo(Location::class);
     }

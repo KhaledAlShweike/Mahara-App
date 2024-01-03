@@ -21,19 +21,19 @@ class Location extends Model
     {
         return $this->hasMany(Club::class);
     }
-    public function Tournement()
+    public function Tournements()
     {
         return $this->hasMany(Tournement::class);
     }
-    public function PendingTeamtoTeamMatching()
+    public function PendingTeamtoTeamMatchings()
     {
         return $this->hasMany(PendingTeamtoTeamMatching::class);
     }
-    public function PlayertoTeamMatching()
+    public function PlayertoTeamMatchings()
     {
         return $this->hasMany(PlayertoTeamMatching::class);
     }
-    public function TeamtoTeamMatching()
+    public function TeamtoTeamMatchings()
     {
         return $this->hasMany(TeamtoTeamMatching::class);
     }

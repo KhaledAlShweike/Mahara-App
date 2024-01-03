@@ -9,7 +9,7 @@ class ClubManager extends Model
 {
     use HasFactory;
 
-    public function ActorPersonalInfo()
+    public function ActorPersonalInfos()
     {
         return $this->belongsTo(ActorPersonalInfo::class);
     }

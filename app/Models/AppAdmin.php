@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AppAdmin extends Model
 {
     use HasFactory;
-    public function ActorPersonalInfo()
+    public function ActorPersonalInfos()
     {
         return $this->belongsTo(ActorPersonalInfo::class);
     }

@@ -19,11 +19,11 @@ class Player extends Model
         return $this->belongsTo(ActorPersonalInfo::class);
     }
     
-    public function Reservation()
+    public function Reservations()
     {
         return $this->belongsToMany(Reservation::class);
     }
-    public function Archive()
+    public function Archives()
     {
         return $this->belongsToMany(Archive::class);
     }
@@ -31,7 +31,7 @@ class Player extends Model
     {
         return $this->belongsToMany(Team::class);
     }
-    public function Notification()
+    public function Notifications()
     {
         return $this->belongsToMany(Notification::class);
     }

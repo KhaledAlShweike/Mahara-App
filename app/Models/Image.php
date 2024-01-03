@@ -12,12 +12,12 @@ class Image extends Model
     protected $fillable = ['title', 'Image_path'];
 
 
-    public function Club()
+    public function Clubs()
     {
     return $this->belongsTo(Club::class);
     }
 
-    public function Stadium()
+    public function Stadiums()
     {
     return $this->belongsTo(Stadium::class);
     }

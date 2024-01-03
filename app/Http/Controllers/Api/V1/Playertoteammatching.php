@@ -64,11 +64,11 @@ class TeamtoPlayer_Matching extends Controller
                     'Reservation' => [
                         'start_time' => $Reservation->start_time,
                         'end_time' => $Reservation->end_time,
-                        'Club_id' => $Reservation->Club_id,
-                        'name' => $Reservation->Club_name,
-                        'address' => $Reservation->address,
-                        'Stadium_id' => $Reservation->Stadium_id,
-                        'SportType' => $Reservation->SportType,
+                        'Club_id' => $Reservation->Stadiums->Clubs->id,
+                        'name' => $Reservation->Stadiums->Clubs->name,
+                        'address' => $Reservation->Stadium->Clubs->Locations,
+                        'Stadium_id' => $Reservation->Stadiums->id,
+                        'SportType' => $Reservation->Stadiums->Clubs->SportTypes->Sport_Type,
                     ],
                     'pending_matching_id' => $pendingMatching->id,
                 ], 200);
