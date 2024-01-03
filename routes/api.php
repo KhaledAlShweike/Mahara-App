@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\V1\GetNewestClubs;
+use App\Http\Controllers\Api\V1\GetNewestStadiums;
 use App\Http\Controllers\Api\V1\GetPlayerReservation;
 use App\Http\Controllers\Api\V1\TeamtoPlayer_Matching;
 use App\Http\Controllers\Api\V1\TeamtoTeamMatching;
@@ -48,11 +50,13 @@ Route::get('/stadiam/{id}', [StadiumController::class, 'show']);
 Route::post('/ToTmatching', [TeamtoTeamMatching::class, 'TeamtoTeamMatching']);
 Route::post('/ToPmatching', [TeamtoPlayer_Matching::class, 'TeamtoPlayerMatching']);
 
-Route::get('/sports',[SportTypeController::class,'index']);
-Route::get('/cities',[LocationController::class,'index']);
-Route::get('/Clubs',[ClubController::class,'index']);
-Route::get('/Stadiums',[StadiumController::class,'index']);
-Route::get('/PlayertoTeammatches',[PlayerToTeamMatchingController::class,'getPlayertoTeammatching']);
-Route::get('/TeamtoTeammatches',[TeamtoTeamMatchingController::class,'getTeamtoTeamMatching']);
-
-Route::get('/PlayerReservation',[GetPlayerReservation::class, 'GetPlayerReservation']);
+Route::get('/sports', [SportTypeController::class, 'index']);
+Route::get('/cities', [LocationController::class, 'index']);
+Route::get('/Clubs', [ClubController::class, 'index']);
+Route::get('/Stadiums', [StadiumController::class, 'index']);
+Route::get('/Locations', [LocationController::class, 'index']);
+Route::get('/PlayertoTeammatches', [PlayerToTeamMatchingController::class, 'getPlayertoTeammatching']);
+Route::get('/TeamtoTeammatches', [TeamtoTeamMatchingController::class, 'getTeamtoTeamMatching']);
+Route::get('/PlayerReservation', [GetPlayerReservation::class, 'GetPlayerReservation']);
+Route::get('/NewestStadiums', [GetNewestStadiums::class, 'GetNewestStadiums']);
+Route::get('/NewestClubs', [GetNewestClubs::class, 'GetNewestClubs']);
