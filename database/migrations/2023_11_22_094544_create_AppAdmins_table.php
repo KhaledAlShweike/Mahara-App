@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ActorPersonalInfo;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,8 +14,7 @@ return new class extends Migration
     {
         Schema::create('AppAdmins', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('personal_info_id');
-            $table->foreign('personal_info_id')->references('id')->on('ActorPersonalInfos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignIdFor(ActorPersonalInfo::class)->nullable()->constrained('ActorPersonalInfos');
         });
     }
 

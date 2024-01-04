@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->unsignedBigInteger('Rule_id');
-            $table->foreign('Rule_id')->references('id')->on('Rules')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('Rule_id')->references('id')->on('rules')->onDelete('cascade');
             $table->dateTime('b_date')->nullable()->default(now());
-            $table->enum('gender',['male','female']);
+            $table->enum('gender', ['male', 'female']);
+            $table->timestamps();
         });
     }
 
