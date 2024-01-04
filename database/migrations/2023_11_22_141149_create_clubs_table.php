@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\ClubManager;
+use App\Models\Image;
 use App\Models\Location;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->string('phone_number');
             $table->foreignIdFor(ClubManager::class)->nullable()->constrained('ClubManagers');
             $table->foreignIdFor(Location::class)->nullable()->constrained('Locations');
+            $table->foreignIdFor(Image::class)->nullable()->constrained('Images');
             $table->timestamps();
         });
     }

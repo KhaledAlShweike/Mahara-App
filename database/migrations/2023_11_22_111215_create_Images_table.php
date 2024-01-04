@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ClubStadiums', function (Blueprint $table) {
-            $table->foreignIdFor(Stadium::class)->nullable()->constrained('Stadiums');
-            $table->foreignIdFor(Club::class)->nullable()->constrained('Clubs');
+        Schema::create('Images', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('Image_path');
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ClubStadiums');
+        Schema::dropIfExists('Images');
     }
 };
