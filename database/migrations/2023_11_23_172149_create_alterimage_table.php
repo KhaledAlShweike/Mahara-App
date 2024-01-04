@@ -2,6 +2,7 @@
 
 use App\Models\Image;
 use App\Models\Player;
+use App\Models\Stadium;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('AlterImage', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Player::class)->nullable()->constrained('Players');
+            $table->foreignIdFor(Stadium::class)->nullable()->constrained('Stadiums');
             $table->foreignIdFor(Image::class)->nullable()->constrained('Images');
             $table->timestamps();
         });
