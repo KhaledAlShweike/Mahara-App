@@ -35,6 +35,6 @@ class Club extends Model
 
     public function Image()
     {
-        return $this->hasMany(Image::class,'name','id');
+        return $this->hasOne(Image::class,'name','id');
     }
 }

@@ -24,6 +24,6 @@ class Image extends Model
 
     public function Players()
     {
-        return $this->hasMany(Player::class);
+        return $this->belongsTo(Player::class);
     }
 }

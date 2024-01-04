@@ -35,4 +35,8 @@ class Player extends Model
     {
         return $this->belongsToMany(Notification::class);
     }
+    public function Images()
+    {
+        return $this->hasOne(Image::class);
+    }
 }
