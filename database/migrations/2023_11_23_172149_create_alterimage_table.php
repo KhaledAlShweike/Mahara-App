@@ -15,10 +15,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('AlterImage', function (Blueprint $table) {
-            $table->id();
             $table->foreignIdFor(Stadium::class)->nullable()->constrained('Stadiums');
             $table->foreignIdFor(Image::class)->nullable()->constrained('Images');
-            $table->timestamps();
         });
     }
 

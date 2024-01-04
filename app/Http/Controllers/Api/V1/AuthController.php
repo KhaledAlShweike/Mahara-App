@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\ActorPersonalInfo;
+use Http;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -56,22 +58,30 @@ class AuthController extends Controller
         $user = ActorPersonalInfo::where('phone_number', $credentials['phone_number'])->first();
 
         if (!$user || !Hash::check($credentials['password'], $user->password)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return Response::json(['error' => 'Unauthorized'], 401);
         }
+    
         // Set 'status' to 1 when the user is signed in
         $user->status = 1;
         $user->save();
-        
-    if (Auth::attempt($credentials)) {
-        // Authentication passed
-        $user = Auth::ActorPersonalInfo();
-        $token = $user->createToken('authToken')->accessToken;
-
-        return response()->json(['message' => 'Login successful', 'user' => $user, 'access_token' => $token], 200);
-    } else {
-        // Authentication failed
-        return response()->json(['message' => 'Invalid credentials'], 401);
-    }
+    
+        $response = \Illuminate\Support\Facades\Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'Authorization' => 'key=AAAAiG6RzA8:APA91bFyWSi4lI8HjUBaGxtkm5bDxVOt2VBPuPV_XeaBsuWsfYRwAcYHA80vRv_n0GpoAbZZNJAGJYQ0TvTg0IzhAtb6fk4_7p8usoQt9pLBmdIf4y6GzLB5dstFEFx1XhLTb78O58vK',
+            ])
+            ->post('https://fcm.googleapis.com/fcm/send', [
+                'to' => 'هون بتحط التوكين يلي ببعتلك ياه و يلي بتخزنو بتيبل ال player',
+                'notification' => [
+                    'title' => 'هون عنوان النتفوكيشن ',
+                    'body' => 'هون الكتابة التحتانية تبع النفوكيشن ',
+                ],
+                'data' => [
+                    'type' => 'logout',
+                    'title' => 'This account is used to login in another device, Please use one device only to use our application',
+                ],
+            ]);
+    
+        return $response;
     }
     public function me()
     {

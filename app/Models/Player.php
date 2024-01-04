@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\ActorPersonalInfo;
 use App\Models\Archive;
 use App\Models\Notification;
+use App\Models\Position;
 use App\Models\Reservation;
 use App\Models\Team;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -38,5 +39,9 @@ class Player extends Model
     public function Images()
     {
         return $this->hasOne(Image::class);
+    }
+    public function Positions()
+    {
+        return $this->hasOne(Position::class);
     }
 }
