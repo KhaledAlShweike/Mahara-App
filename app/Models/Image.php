@@ -19,7 +19,7 @@ class Image extends Model
 
     public function Stadiums()
     {
-    return $this->belongsTo(Stadium::class);
+    return $this->belongsToMany(Stadium::class);
     }
 
     public function Players()

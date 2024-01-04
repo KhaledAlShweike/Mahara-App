@@ -15,9 +15,7 @@ return new class extends Migration
         Schema::create('Position', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(SportType::class)->constrained('SportTypes')->nullable();
-            $table->enum('Position',['Football','Basketball']);
-            $table->enum('Football',['Attacker', ' Gooal Keeper ', ' Defender ', 'Midfielder']);
-            $table->enum('Basketball', ['Center',' Power forward', 'Small forward',' Point guard', 'Shooting guard']);
+            $table->string('Position',50);
             $table->timestamps();
         });
     }
