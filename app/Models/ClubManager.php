@@ -9,9 +9,10 @@ class ClubManager extends Model
 {
     use HasFactory;
     protected $fillable = [];
+    protected $table ="ClubManagers";
 
     public function ActorPersonalInfos()
     {
-        return $this->belongsTo(ActorPersonalInfo::class);
+        return $this->belongsTo(ActorPersonalInfos::class);
     }
 }

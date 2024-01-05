@@ -16,6 +16,7 @@ class Location extends Model
 
     protected $fillable = ['name'];
 
+    protected $table ="Locations";
 
     public function Clubs()
     {

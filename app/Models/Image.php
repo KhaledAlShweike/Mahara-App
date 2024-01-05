@@ -11,6 +11,7 @@ class Image extends Model
 
     protected $fillable = ['title', 'Image_path'];
 
+    protected $table ="Images";
 
     public function Clubs()
     {

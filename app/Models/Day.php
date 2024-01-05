@@ -10,6 +10,7 @@ class Day extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];
+    protected $table ="Days";
 
     public function Tournements()
     {

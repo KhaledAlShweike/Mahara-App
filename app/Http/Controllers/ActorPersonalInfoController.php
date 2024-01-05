@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\ActorPersonalInfo;
+use App\Models\ActorPersonalInfos;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class ActorPersonalInfoController extends Controller
+class ActorPersonalInfosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -46,10 +46,10 @@ class ActorPersonalInfoController extends Controller
         //
     }
 
-    public function update(Request $request,ActorPersonalInfo $ActorPersonalInfo ) 
+    public function update(Request $request,ActorPersonalInfos $ActorPersonalInfos ) 
     {
 
-        $actor = ActorPersonalInfo::get('id');
+        $actor = ActorPersonalInfos::get('id');
         if ($actor) {
             $actor->update([
                 'first_name' => $request->first_name,

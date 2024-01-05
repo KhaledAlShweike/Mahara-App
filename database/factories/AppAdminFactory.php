@@ -14,7 +14,7 @@ class AppAdminFactory extends Factory
         return [
             'personal_info_id' => function () {
                 // Assuming ActorPersonalInfos has records in the database
-                return \App\Models\ActorPersonalInfo::inRandomOrder()->first()->id;
+                return \App\Models\ActorPersonalInfos::inRandomOrder()->first()->id;
             },
         ];
     }

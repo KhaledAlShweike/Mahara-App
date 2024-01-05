@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\ActorPersonalInfo;
+use App\Models\ActorPersonalInfos;
 use App\Models\Image;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('Players', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(ActorPersonalInfo::class)->nullable()->constrained('ActorPersonalInfos');
+            $table->foreignIdFor(ActorPersonalInfos::class)->nullable()->constrained('ActorPersonalInfos');
             $table->foreignIdFor(Image::class)->nullable()->constrained('Images');
             $table->string('token');
         });

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\ActorPersonalInfo;
+use App\Models\ActorPersonalInfos;
 use App\Models\Archive;
 use App\Models\Notification;
 use App\Models\Position;
@@ -15,9 +15,11 @@ class Player extends Model
 {
     use HasFactory;
 
-    public function ActorPersonalInfo()
+    protected $table ="Players";
+
+    public function ActorPersonalInfos()
     {
-        return $this->belongsTo(ActorPersonalInfo::class);
+        return $this->belongsTo(ActorPersonalInfos::class);
     }
     
     public function Reservations()

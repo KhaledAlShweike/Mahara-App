@@ -15,7 +15,7 @@ class DoctorFactory extends Factory
             'clinic_number' => $this->faker->word,
             'personal_info_id' => function () {
                 // Assuming ActorPersonalInfos has records in the database
-                return \App\Models\ActorPersonalInfo::inRandomOrder()->first()->id;
+                return \App\Models\ActorPersonalInfos::inRandomOrder()->first()->id;
             },
         ];
     }

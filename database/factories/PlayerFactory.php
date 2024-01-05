@@ -14,7 +14,7 @@ class PlayerFactory extends Factory
     {
         return [
             'personal_info_id' => function () {
-                return \App\Models\ActorPersonalInfo::factory()->create()->id;
+                return \App\Models\ActorPersonalInfos::factory()->create()->id;
             },
             'image_id' => function () {
                 return \App\Models\Image::factory()->create()->id;

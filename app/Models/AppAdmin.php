@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class AppAdmin extends Model
 {
     use HasFactory;
+
+    protected $table ="AppAdmins";
+
     public function ActorPersonalInfos()
     {
-        return $this->belongsTo(ActorPersonalInfo::class);
+        return $this->belongsTo(ActorPersonalInfos::class);
     }
 }

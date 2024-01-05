@@ -3,10 +3,12 @@
 use App\Http\Controllers\Api\V1\GetNewestClubs;
 use App\Http\Controllers\Api\V1\GetNewestStadiums;
 use App\Http\Controllers\Api\V1\GetPlayerReservation;
+use App\Http\Controllers\Api\V1\GetTopReservedStadiums;
 use App\Http\Controllers\Api\V1\TeamtoPlayer_Matching;
 use App\Http\Controllers\Api\V1\TeamtoTeamMatching;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\StadiumController;
 use Illuminate\Http\Request;
@@ -60,3 +62,5 @@ Route::get('/TeamtoTeammatches', [TeamtoTeamMatchingController::class, 'getTeamt
 Route::get('/PlayerReservation', [GetPlayerReservation::class, 'GetPlayerReservation']);
 Route::get('/NewestStadiums', [GetNewestStadiums::class, 'GetNewestStadiums']);
 Route::get('/NewestClubs', [GetNewestClubs::class, 'GetNewestClubs']);
+Route::get('/Notificationcount',[NotificationController::class, 'index']);
+Route::get('/TopStadiums',[GetTopReservedStadiums::class, 'getTopReservedStadiums']);

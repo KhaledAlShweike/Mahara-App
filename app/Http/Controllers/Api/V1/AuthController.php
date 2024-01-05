@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ActorPersonalInfo;
+use App\Models\ActorPersonalInfos;
 use Http;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -31,7 +31,7 @@ class AuthController extends Controller
             'b_date' => 'required|date_format:Y-m-d',
         ]);
 
-        $user = new ActorPersonalInfo();
+        $user = new ActorPersonalInfos();
         $user->first_name = $request['first_name'];
         $user->last_name = $request['last_name'];
         $user->phone_number = $request['phone_number'];
@@ -55,7 +55,7 @@ class AuthController extends Controller
     {
         $credentials = $request->only('phone_number', 'password');
 
-        $user = ActorPersonalInfo::where('phone_number', $credentials['phone_number'])->first();
+        $user = ActorPersonalInfos::where('phone_number', $credentials['phone_number'])->first();
 
         if (!$user || !Hash::check($credentials['password'], $user->password)) {
             return Response::json(['error' => 'Unauthorized'], 401);

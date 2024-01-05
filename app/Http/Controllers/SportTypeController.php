@@ -14,7 +14,11 @@ class SportTypeController extends Controller
     public function index()
     {
         $Sport = SportType::all();
-        return response()->json(['Sports Type'=>$Sport],200);
+        if($Sport->isEmpty())
+        {
+            return response()->json(['status' => 1, 'message' => 'No Sports found.'], 404);
+        }
+        return response()->json(['status' => 0,'Sports Type'=>$Sport],200);
     }
 
     /**

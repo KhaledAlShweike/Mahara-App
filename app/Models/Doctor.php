@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
     use HasFactory;
+
+    protected $table ="Doctors";
+
     public function ActorPersonalInfos()
     {
-        return $this->belongsTo(ActorPersonalInfo::class);
+        return $this->belongsTo(ActorPersonalInfos::class);
     }
 }

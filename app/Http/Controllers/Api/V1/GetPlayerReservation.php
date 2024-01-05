@@ -65,6 +65,7 @@ class GetPlayerReservation extends Controller
         return response()->json([
             'message' => 'All player reservations:',
             'Player name' => $Playerfullname,
+            'Player id'=> $Playerid,
             'Reservations' => $reservationsInfo,
         ]);
     }

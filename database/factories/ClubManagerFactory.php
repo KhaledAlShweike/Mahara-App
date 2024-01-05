@@ -15,7 +15,7 @@ class ClubManagerFactory extends Factory
             'code' => $this->faker->numberBetween(100000, 999999),
             'personal_info_id' => function () {
                 // Assuming ActorPersonalInfos has records in the database
-                return \App\Models\ActorPersonalInfo::inRandomOrder()->first()->id;
+                return \App\Models\ActorPersonalInfos::inRandomOrder()->first()->id;
             },
         ];
     }

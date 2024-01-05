@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\ActorPersonalInfo;
+use App\Models\ActorPersonalInfos;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +16,8 @@ return new class extends Migration
             $table->id();
             $table->string('Location');
             $table->string('clinic_number');
-            $table->foreignIdFor(ActorPersonalInfo::class)->nullable()->constrained('ActorPersonalInfos');
+            $table->foreignIdFor(ActorPersonalInfos::class)->nullable()->constrained('ActorPersonalInfos');
+
         });
     }
 

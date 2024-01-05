@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Notification extends Model
 {
     use HasFactory;
+    protected $table ="Notifications";
 
     protected $fillable = ['Type','Title','Content','Expire_date'];
 

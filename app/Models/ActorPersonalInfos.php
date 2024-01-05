@@ -11,11 +11,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class ActorPersonalInfo extends Model
+class ActorPersonalInfos extends Model
 {
     use HasFactory;
     use Notifiable;
 
+    protected $table ="ActorPersonalInfos";
     protected $fillable = [
         'first_name',
         'last_name',
