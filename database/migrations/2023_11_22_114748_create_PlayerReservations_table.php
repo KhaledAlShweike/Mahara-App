@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Player;
+use App\Models\Reservation;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,11 +14,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('PlayerReservations', function (Blueprint $table) {
-           $table->unsignedBigInteger('Player_id');
-           $table->unsignedBigInteger('Reservation_id');
-           $table->foreign('Player_id')->references('id')->on('Players')->onDelete('cascade')->onUpdate('cascade');
-           $table->foreign('Reservation_id')->references('id')->on('Reservations')->onDelete('cascade')->onUpdate('cascade');
-         });
+           $table->foreignIdFor(Player::class)->nullable()->constrained('Players');
+           $table->foreignIdFor(Reservation::class)->nullable()->constrained('Reservations');
+        });
     }
 
     /**

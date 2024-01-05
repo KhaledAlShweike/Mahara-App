@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('SportTypes', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('SportType');
         });
     }

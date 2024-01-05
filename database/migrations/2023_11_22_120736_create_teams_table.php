@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\SportType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('Rank');
             $table->boolean('enable_join')->default(false);
-            $table->foreignId('SportType_id')->constraint()->onDelete('cascade')->onupdate('cascade');
+            $table->foreignIdFor(SportType::class)->nullable()->constrained('SportTypes');
         });           
 
     }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Day;
+use App\Models\Tournement;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,9 +14,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('PlayingDaysTournements', function (Blueprint $table) {
-         
-            $table->foreignId('Tournement_id')->references('id')->on('Tournements')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('Day_id')->references('id')->on('Days')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignIdFor(Tournement::class)->nullable()->constrained('Tournements');
+            $table->foreignIdFor(Day::class)->nullable()->constrained('Days');
         });
     }
 

@@ -14,6 +14,7 @@ return new class extends Migration
     {
         Schema::create('Stadiums', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('Stadium_type');
             $table->integer('price');
             $table->float('discount');

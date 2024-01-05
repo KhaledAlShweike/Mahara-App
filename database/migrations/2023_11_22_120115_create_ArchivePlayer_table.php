@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Archive;
+use App\Models\Player;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,10 +14,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ArchivePlayer', function (Blueprint $table) {
-            $table->unsignedBigInteger('Player_id');
-            $table->unsignedBigInteger('Archive_id');
-            $table->foreign('Player_id')->references('id')->on('Players')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('Archive_id')->references('id')->on('Archives')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignIdFor(Player::class)->nullable()->constrained('Players');
+            $table->foreignIdFor(Archive::class)->nullable()->constrained('Archives');
         });
     }
 
