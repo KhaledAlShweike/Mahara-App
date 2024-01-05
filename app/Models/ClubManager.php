@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ClubManager extends Model
 {
     use HasFactory;
+    protected $fillable = [];
 
     public function ActorPersonalInfos()
     {

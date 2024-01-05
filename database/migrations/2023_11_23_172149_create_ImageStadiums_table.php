@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('AlterImage', function (Blueprint $table) {
+        Schema::create('ImageStadiums', function (Blueprint $table) {
             $table->foreignIdFor(Stadium::class)->nullable()->constrained('Stadiums');
             $table->foreignIdFor(Image::class)->nullable()->constrained('Images');
         });
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('AlterImage');
+        Schema::dropIfExists('ImageStadiums');
     }
 };
