@@ -13,8 +13,8 @@ class AppAdminFactory extends Factory
     {
         return [
             // 'personal_info_id' => function () {
-                // Assuming ActorPersonalInfos has records in the database
-                'personal_info_id' => 1,
+            // Assuming ActorPersonalInfos has records in the database
+'id'=>$this->faker->uuid,
             // },
         ];
     }
