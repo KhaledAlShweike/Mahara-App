@@ -12,7 +12,7 @@ class Reservation extends Model
     use HasFactory;
 
     protected $fillable = ['start_date','end_date'];
-    protected $table ="Reservations";
+    protected $table ='Reservations';
 
 
     public function Archives()

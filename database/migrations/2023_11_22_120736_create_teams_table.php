@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('Rank');
             $table->boolean('enable_join')->default(false);
             $table->foreignIdFor(SportType::class)->nullable()->constrained('SportTypes');
+            $table->timestamps();
+
         });           
 
     }

@@ -12,7 +12,7 @@ use Illuminate\Http\Client\Request;
 class PendingTeamtoTeamMatching extends Model
 {
     use HasFactory;
-    protected $table ="PendingTeamtoTeamMatchings";
+    protected $table ='PendingTeamtoTeamMatchings';
 
     public function Locations()
     {

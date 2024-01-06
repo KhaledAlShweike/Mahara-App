@@ -15,7 +15,7 @@ class Player extends Model
 {
     use HasFactory;
 
-    protected $table ="Players";
+    protected $table ='Players';
 
     public function ActorPersonalInfos()
     {

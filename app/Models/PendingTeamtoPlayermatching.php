@@ -9,6 +9,6 @@ class PendingTeamtoPlayermatching extends Model
 {
     use HasFactory;
 
-    protected $table ="PendingTeamtoPlayermatchings";
+    protected $table ='PendingTeamtoPlayermatchings';
 
 }

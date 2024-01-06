@@ -16,7 +16,7 @@ class ActorPersonalInfos extends Model
     use HasFactory;
     use Notifiable;
 
-    protected $table ="ActorPersonalInfos";
+    protected $table ='ActorPersonalInfos';
     protected $fillable = [
         'first_name',
         'last_name',

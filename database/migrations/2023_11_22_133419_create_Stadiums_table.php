@@ -21,6 +21,7 @@ return new class extends Migration
             $table->float('discount');
             $table->foreignIdFor(Club::class)->nullable()->constrained('Clubs');
             $table->foreignIdFor(SportType::class)->nullable()->constrained('SportTypes');
+            $table->timestamps();
 
         });
     }

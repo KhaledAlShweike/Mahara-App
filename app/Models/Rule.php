@@ -11,7 +11,8 @@ class Rule extends Model
     use HasFactory;
 
     protected $fillable = ['Rule_type'];
-    protected $table ="Rule";
+    protected $table ='R
+    ules';
 
 
     public function ActorPersonalInfos()

@@ -15,7 +15,7 @@ class Club extends Model
     // Additional details
     protected $fillable = ['name', 'address', 'phone_number'];
 
-    protected $table ="Clubs";
+    protected $table ='Clubs';
 
     public function Stadiums()
     {

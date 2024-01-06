@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('Rules', function (Blueprint $table) {
             $table->id();
             $table->enum('Rule',['Player','AppAdmin','ClubManager','Doctor'])->default('Player');
-
+            $table->timestamps();
         });
     }
 

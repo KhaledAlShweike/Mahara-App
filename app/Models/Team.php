@@ -12,7 +12,7 @@ class Team extends Model
     use HasFactory;
 
     protected $fillable =['name','Sport_type'];
-    protected $table ="Teams";
+    protected $table ='Teams';
 
     public function Players()
     {

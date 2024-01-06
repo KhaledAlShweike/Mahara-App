@@ -12,7 +12,7 @@ class Stadium extends Model
     use HasFactory;
 
     protected $fillable = ['Stadium_type','Price','Discount'];
-    protected $table ="Stadiums";
+    protected $table ='Stadiums';
 
 
 

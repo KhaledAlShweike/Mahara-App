@@ -11,7 +11,7 @@ class Archive extends Model
     use HasFactory;
 
     protected $fillable=['Final_result'];
-    protected $table ="Archives";
+    protected $table ='Archives';
 
     public function Reservations()
     {

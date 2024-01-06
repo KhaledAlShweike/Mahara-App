@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Position extends Model
 {
     use HasFactory;
-    protected $table ="Positions";
+    protected $table ='Positions';
 
     public function Players()
     {

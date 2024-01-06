@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('code')->nullable();
             $table->foreignIdFor(ActorPersonalInfos::class)->nullable()->constrained('ActorPersonalInfos');
+            $table->timestamps();
         });
     }
 

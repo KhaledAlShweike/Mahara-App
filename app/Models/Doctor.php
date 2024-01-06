@@ -9,7 +9,7 @@ class Doctor extends Model
 {
     use HasFactory;
 
-    protected $table ="Doctors";
+    protected $table ='Doctors';
 
     public function ActorPersonalInfos()
     {

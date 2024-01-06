@@ -12,7 +12,7 @@ class SportType extends Model
 
     protected $fillable = ['Sport_type'];
 
-    protected $table ="SportTypes";
+    protected $table ='SportTypes';
 
 
     public function Clubs()

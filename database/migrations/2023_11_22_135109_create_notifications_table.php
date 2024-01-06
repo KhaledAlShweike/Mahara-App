@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('flow_id');
             $table->dateTime('expire_date');
             $table->boolean('is_read')->default(false);
+            $table->timestamps();
+
         });
     }
 

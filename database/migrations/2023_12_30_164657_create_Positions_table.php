@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Position', function (Blueprint $table) {
+        Schema::create('Positions', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(SportType::class)->constrained('SportTypes')->nullable();
             $table->string('Position',50);
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Position');
+        Schema::dropIfExists('Positions');
     }
 };

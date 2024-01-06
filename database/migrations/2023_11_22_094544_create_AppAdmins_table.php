@@ -16,7 +16,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('personal_info_id');
             $table->foreign('personal_info_id')->references('id')->on('ActorPersonalInfos')->onDelete('cascade')->onUpdate('cascade');
-
+            $table->timestamps();
+        
         });
     }
 

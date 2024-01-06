@@ -9,7 +9,7 @@ class ClubManager extends Model
 {
     use HasFactory;
     protected $fillable = [];
-    protected $table ="ClubManagers";
+    protected $table ='ClubManagers';
 
     public function ActorPersonalInfos()
     {

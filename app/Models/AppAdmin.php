@@ -9,7 +9,7 @@ class AppAdmin extends Model
 {
     use HasFactory;
 
-    protected $table ="AppAdmins";
+    protected $table ='AppAdmins';
 
     public function ActorPersonalInfos()
     {
