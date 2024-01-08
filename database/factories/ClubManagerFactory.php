@@ -17,6 +17,8 @@ class ClubManagerFactory extends Factory
                 // Assuming ActorPersonalInfos has records in the database
                 return \App\Models\ActorPersonalInfos::inRandomOrder()->first()->id;
             },
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

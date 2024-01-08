@@ -22,6 +22,8 @@ class SportTypeFactory extends Factory
     {
         return [
             'SportType' => $this->faker->word,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

@@ -7,15 +7,19 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AppAdminFactory extends Factory
 {
-    protected $model = AppAdmin::class;
-
-    public function definition()
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
     {
         return [
-            // 'personal_info_id' => function () {
-            // Assuming ActorPersonalInfos has records in the database
-'id'=>$this->faker->uuid,
-            // },
+            'personal_info_id' => function () {
+                return \App\Models\ActorPersonalInfos::factory()->create()->id;
+            },
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

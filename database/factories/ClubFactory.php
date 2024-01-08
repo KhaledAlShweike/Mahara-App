@@ -30,6 +30,8 @@ class ClubFactory extends Factory
             'club_manager_id' => ClubManager::factory(),
             'location_id' => Location::factory(),
             'image_id' => Image::factory(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

@@ -28,6 +28,8 @@ class PendingTeamtoPlayerMatchingFactory extends Factory
             'reservation_id' => Reservation::factory(),
             'team_id' => Team::factory(),
             'player_id' => Player::factory(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

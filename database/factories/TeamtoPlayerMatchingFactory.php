@@ -27,6 +27,8 @@ class TeamtoPlayerMatchingFactory extends Factory
             'position' => $this->faker->randomElement(['Attacker', 'Goal Keeper', 'Defender', 'Midfielder']),
             'reservation_id' => Reservation::factory(),
             'team_id' => Team::factory(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

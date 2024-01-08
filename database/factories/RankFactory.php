@@ -26,6 +26,8 @@ class RankFactory extends Factory
             'name' => $this->faker->word,
             'start_range' => $this->faker->numberBetween(1, 100),
             'end_range' => $this->faker->numberBetween(101, 200),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

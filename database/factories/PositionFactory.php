@@ -28,6 +28,8 @@ class PositionFactory extends Factory
             'position' => $this->faker->randomElement([
                 'Attacker', 'Goal Keeper', 'Defender', 'Midfielder', 'Center', 'Power Forward', 'Small Forward', 'Point Guard', 'Shooting Guard'
             ]),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

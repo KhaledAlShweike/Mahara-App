@@ -28,6 +28,8 @@ class NotificationFactory extends Factory
             'flow_id' => $this->faker->uuid,
             'expire_date' => $this->faker->dateTimeThisYear,
             'is_read' => $this->faker->boolean,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

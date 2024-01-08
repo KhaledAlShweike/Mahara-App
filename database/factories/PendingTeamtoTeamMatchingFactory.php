@@ -35,6 +35,8 @@ class PendingTeamtoTeamMatchingFactory extends Factory
             'location_id' => Location::factory(),
             'stadium_id' => Stadium::factory(),
             'sport_type_id' => SportType::factory(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

@@ -32,6 +32,8 @@ class TournementFactory extends Factory
             'start_playing_time' => $this->faker->dateTimeBetween('+2 months', '+3 months'),
             'end_playing_time' => $this->faker->dateTimeBetween('+3 months', '+4 months'),
             'sport_type_id' => SportType::factory(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

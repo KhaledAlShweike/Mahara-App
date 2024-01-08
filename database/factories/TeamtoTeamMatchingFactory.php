@@ -33,6 +33,8 @@ class TeamtoTeamMatchingFactory extends Factory
             'club_id' => Club::factory(),
             'location_id' => Location::factory(),
             'sport_type_id' => SportType::factory(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

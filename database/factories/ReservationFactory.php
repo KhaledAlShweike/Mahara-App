@@ -13,6 +13,8 @@ class ReservationFactory extends Factory
         return [
             'start_datetime' => $this->faker->dateTimeBetween('now', '+30 days'),
             'end_datetime' => $this->faker->dateTimeBetween('+31 days', '+60 days'),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

@@ -20,6 +20,8 @@ class PlayerFactory extends Factory
                 return \App\Models\Image::factory()->create()->id;
             },
             'token' => Str::random(32), // or use any logic to generate a token
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

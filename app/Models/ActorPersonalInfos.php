@@ -20,12 +20,15 @@ class ActorPersonalInfos extends Model
     protected $fillable = [
         'first_name',
         'last_name',
-        'Rule',
         'phone_number',
         'email',
         'password',
-        'code',
-        'b_date'
+        'rule_id',
+        'b_date',
+        'gender'
+    ];
+    protected $dates = [
+        'b_date',
     ];
     public function AppAdmins()
     {
@@ -41,6 +44,6 @@ class ActorPersonalInfos extends Model
     }
     public function Rules()
     {
-        return $this->hasMany(Rule::class);
+        return $this->belongsTo(Rule::class);
     }
 }

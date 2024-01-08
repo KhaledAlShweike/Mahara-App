@@ -18,6 +18,8 @@ class DayFactory extends Factory
     {
         return [
            'name' => $this->faker->dayOfWeek,
+           'created_at' => now(),
+           'updated_at' => now(),
         ];
     }
 }

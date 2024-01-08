@@ -23,6 +23,8 @@ class LocationFactory extends Factory
     {
         return [
             'name' => $this->faker->city,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

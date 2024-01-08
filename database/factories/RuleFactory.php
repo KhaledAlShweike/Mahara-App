@@ -14,6 +14,8 @@ class RuleFactory extends Factory
     {
         return [
             'Rule' => $this->faker->randomElement(['Player', 'AppAdmin', 'ClubManager', 'Doctor']),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

@@ -2,12 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\ActorPersonalInfos;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ActorPersonalInfos.php>
- */
-class ActorPersonalInfosFactory extends Factory
+class ActorPersonalInfoFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,11 +20,14 @@ class ActorPersonalInfosFactory extends Factory
             'last_name' => $this->faker->lastName,
             'phone_number' => $this->faker->phoneNumber,
             'email' => $this->faker->unique()->safeEmail,
-            'Rule'=>'player',
-            'password' => \Illuminate\Support\Facades\Hash::make('password123'), // You should use bcrypt() or Hash facade to hash passwords
+            'password' => Hash::make('password123'), // Use Hash facade to hash passwords
             'b_date' => $this->faker->dateTimeBetween('-30 years', '-18 years')->format('Y-m-d'),
             'gender' => $this->faker->randomElement(['male', 'female']),
-        
+            'rule_id' => function () {
+                return \App\Models\Rule::factory()->create()->id;
+            },
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

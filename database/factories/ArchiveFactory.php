@@ -16,6 +16,8 @@ class ArchiveFactory extends Factory
         return [
             'Final_resault' => $this->faker->randomFloat(2, 0, 100),
             'reservation_id' => Reservation::factory(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

@@ -33,6 +33,8 @@ class PlayertoTeamMatchingFactory extends Factory
             'team_id' => Team::factory(),
             'player_id' => Player::factory(),
             'sport_type_id' => SportType::factory(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

@@ -11,12 +11,11 @@ class Rule extends Model
     use HasFactory;
 
     protected $fillable = ['Rule_type'];
-    protected $table ='R
-    ules';
+    protected $table ='Rules';
 
 
     public function ActorPersonalInfos()
     {
-        return $this->belongsTo(ActorPersonalInfos::class);
+        return $this->hasMany(ActorPersonalInfos::class);
     }
 }

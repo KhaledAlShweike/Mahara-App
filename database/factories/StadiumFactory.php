@@ -27,6 +27,8 @@ class StadiumFactory extends Factory
             'price' => $this->faker->randomNumber(4),
             'discount' => $this->faker->randomFloat(2, 0, 1),
             'sport_type_id' => SportType::factory(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

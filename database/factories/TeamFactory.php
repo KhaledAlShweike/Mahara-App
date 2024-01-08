@@ -17,6 +17,8 @@ class TeamFactory extends Factory
             'Rank' => $this->faker->numberBetween(1, 100),
             'enable_join' => $this->faker->boolean,
             'SportType_id' => SportType::factory(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

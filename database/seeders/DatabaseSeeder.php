@@ -37,25 +37,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Rule::factory(10)->create();
         ActorPersonalInfos::factory(10)->create();
         AppAdmin::factory(10)->create();
+        Player::factory(10)->create();
+        Location::factory(10)->create();
         Archive::factory(10)->create();
-        Club::factory(10)->create();
         ClubManager::factory(10)->create();
+        SportType::factory(10)->create();
+        Club::factory(10)->create();
+        Stadium::factory(10)->create();
         Day::factory(10)->create();
         Doctor::factory(10)->create();
         Image::factory(10)->create();
-        Location::factory(10)->create();
         Notification::factory(10)->create();
         PendingTeamtoPlayermatching::factory(10)->create();
         PendingTeamtoTeamMatching::factory(10)->create();
-        Player::factory(10)->create();
         Rank::factory(10)->create();
         Report::factory(10)->create();
         Reservation::factory(10)->create();
-        Rule::factory(10)->create();
-        SportType::factory(10)->create();
-        Stadium::factory(10)->create();
         Team::factory(10)->create();
         TeamtoPlayermatching::factory(10)->create();
         TeamtoTeamMatching::factory(10)->create();

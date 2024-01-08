@@ -15,6 +15,8 @@ class ImageFactory extends Factory
         return [
             'title' => $this->faker->word,
             'Image_path' => $this->faker->imageUrl(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
