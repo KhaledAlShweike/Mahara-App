@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\GetNewestClubs;
 use App\Http\Controllers\Api\V1\GetNewestStadiums;
 use App\Http\Controllers\Api\V1\GetPlayerReservation;
+use App\Http\Controllers\Api\V1\GetTeamtoTeamMatches;
 use App\Http\Controllers\Api\V1\GetTopReservedStadiums;
 use App\Http\Controllers\Api\V1\TeamtoPlayer_Matching;
 use App\Http\Controllers\Api\V1\TeamtoTeamMatching;
@@ -65,6 +66,7 @@ Route::get('/NewestStadiums', [GetNewestStadiums::class, 'GetNewestStadiums']);
 Route::get('/NewestClubs', [GetNewestClubs::class, 'GetNewestClubs']);
 Route::get('/Notificationcount',[NotificationController::class, 'index']);
 Route::get('/TopStadiums',[GetTopReservedStadiums::class, 'getTopReservedStadiums']);
+Route::get('/GetTeamtoTeamMatches',[GetTeamtoTeamMatches::class , 'GetTeamtoTeamMatches']);
 
 
 Route::post('change-password', [UpdateActorInformations::class, 'changePassword']);

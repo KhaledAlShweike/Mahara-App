@@ -24,7 +24,7 @@ class AuthController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:14',
-            'email' => 'required|email|unique:players|max:255',
+            'email' => 'exists:email|unique:players|max:255',
             'password' => 'required|string|min:8',
             'locations' => 'required|string|max:255',
             'gender' => 'required|in:male,female,other',
@@ -41,7 +41,6 @@ class AuthController extends Controller
         $user->Rule = $request['Rule'];
         $user->gender = $request['gender'];
         $user->b_date = $request['b_date'];
-        // Set a default value of 0 for 'status' when registering
         $user->status = 1;
 
         $user->save();
