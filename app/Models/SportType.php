@@ -19,4 +19,8 @@ class SportType extends Model
     {
         return $this->belongsToMany(Club::class);
     }
+    public function Teams()
+    {
+        return $this->hasMany(Team::class);
+    }
 }

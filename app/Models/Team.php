@@ -22,4 +22,8 @@ class Team extends Model
     {
         return $this->belongsToMany(Tournement::class);
     }
+    public function sportTypes()
+    {
+        return $this->belongsTo(SportType::class);
+    }
 }
