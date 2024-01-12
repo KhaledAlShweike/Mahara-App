@@ -98,13 +98,13 @@ class UpdateActorInformations extends Controller
             'SportType' => 'required|string|exists:SportType,name',
         ]);
 
-        $sportType = Team->sportTypes->SportType;
+        
         // Create a new team
-        $team = Team::create(['name' => $request->input('team_name')]);
+        $team = Team::create(['name' => $request->input('team_name'),'SportType' => $request->input('SportType')]);
 
         // Make the actor the captain of the newly created team
         $actor = ActorPersonalInfos::findOrFail($request->input('id'));
-        $actor->update(['team_id' => $team->id, 'is_captain' => true]);
+        $actor->update(['id' => $team->id, 'Captain' => true]);
 
         return response()->json(['message' => 'Team created, and actor made captain successfully']);
     }

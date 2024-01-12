@@ -11,9 +11,20 @@ class DoctorController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $this->validate($request, [
+            'location_id' => 'required|exists:Locations,id',
+        ]);
+
+        $LocationName = $request->input('location_id');
+        $doctors = Doctor::where('Location', $LocationName)->get();
+
+        if ($doctors->isEmpty()) {
+            return response()->json(['status'=> 1,'message' => 'No Doctors found in this Location']);
+        }
+
+        return response()->json(['status'=> 0,'Doctors' => $doctors]);
     }
 
     /**

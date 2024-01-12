@@ -12,24 +12,24 @@ class GetTeamtoTeamMatches extends Controller
     public function GetTeamtoTeamMatches(Request $request)
     {
         $request->validate([
-            'sport' => 'nullable|string',
-            'city' => 'nullable|string',
-            'club' => 'nullable|string',
+            'SportType' => 'required|string',
+            'Location' => 'required|string|exists:Location',
+            'name' => 'nullable|string|exists:Clubs',
             'dateTime' => 'nullable|date',
         ]);
 
         $query = TeamtoTeamMatching::query();
 
-        if ($request->filled('sport')) {
-            $query->orWhere('sport', $request->input('sport'));
+        if ($request->filled('SportType')) {
+            $query->orWhere('SportType', $request->input('SportType'));
         }
 
-        if ($request->filled('city')) {
-            $query->orWhere('city', $request->input('city'));
+        if ($request->filled('Location')) {
+            $query->orWhere('Location', $request->input('Location'));
         }
 
-        if ($request->filled('club')) {
-            $query->orWhere('club', $request->input('club'));
+        if ($request->filled('name')) {
+            $query->orWhere('name', $request->input('name'));
         }
 
         if ($request->filled('dateTime')) {
@@ -38,6 +38,9 @@ class GetTeamtoTeamMatches extends Controller
 
         $teamMatches = $query->get();
 
-        return response()->json(['data' => $teamMatches]);
+        if($teamMatches==Null)
+        {         return response()->json(['status'=> 1 ,'message' => 'No Matches found']);
+        }
+        return response()->json(['status'=> 0 ,'data' => $teamMatches]);
     }
 }
