@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\Api\V1\AcceptJoinRequest;
 use App\Http\Controllers\Api\V1\GetNewestClubs;
 use App\Http\Controllers\Api\V1\GetNewestStadiums;
 use App\Http\Controllers\Api\V1\GetPlayerReservation;
 use App\Http\Controllers\Api\V1\GetTeamtoPlayerMatches;
 use App\Http\Controllers\Api\V1\GetTeamtoTeamMatches;
 use App\Http\Controllers\Api\V1\GetTopReservedStadiums;
+use App\Http\Controllers\Api\V1\TeamManagement;
 use App\Http\Controllers\Api\V1\TeamtoPlayer_Matching;
 use App\Http\Controllers\Api\V1\TeamtoTeamMatching;
 use App\Http\Controllers\Api\V1\UpdateActorInformations;
@@ -70,9 +72,15 @@ Route::get('/TopStadiums',[GetTopReservedStadiums::class, 'getTopReservedStadium
 Route::get('/TeamtoTeamMatches',[GetTeamtoTeamMatches::class , 'GetTeamtoTeamMatches']);
 Route::get('/teamtoPlayermatches',[GetTeamtoPlayerMatches::class, 'GetTeamtoPlayerMatches']);
 
-Route::post('change-password', [UpdateActorInformations::class, 'changePassword']);
-Route::post('change-first-name', [UpdateActorInformations::class, 'changeFirstName']);
-Route::post('change-last-name', [UpdateActorInformations::class, 'changeLastName']);
-Route::post('change-email', [UpdateActorInformations::class, 'changeEmail']);
-Route::post('change-birthdate', [UpdateActorInformations::class, 'changeBirthdate']);
-Route::post('create-team-and-make-captain', [UpdateActorInformations::class, 'createTeamAndMakeCaptain']);
+Route::post('/change-password', [UpdateActorInformations::class, 'changePassword']);
+Route::post('/change-firstname', [UpdateActorInformations::class, 'changeFirstName']);
+Route::post('/change-lastname', [UpdateActorInformations::class, 'changeLastName']);
+Route::post('/change-email', [UpdateActorInformations::class, 'changeEmail']);
+Route::post('/change-birthdate', [UpdateActorInformations::class, 'changeBirthdate']);
+Route::post('/create-team', [UpdateActorInformations::class, 'createTeam']);
+
+Route::post('/acceptplayer', [TeamManagement::class, 'AcceptPlayer']);
+Route::post('/removePlayer', [TeamManagement::class, 'removePlayer']);
+Route::post('/makecaptin', [TeamManagement::class, 'MakeCaptin']);
+Route::post('/removecaptin', [TeamManagement::class, 'RemoveCaptin']);
+

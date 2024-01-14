@@ -7,33 +7,35 @@ use App\Models\SportType;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UpdateActorInformations extends Controller
 {
     public function changePassword(Request $request)
     {
-        $request->validate([
-            'password' => 'required|string',
-            'new_password' => 'required|string|min:8',
-            'confirm_password' => 'required|string|same:new_password',
-        ]);
+        try {
+            $request->validate([
+                'current_password' => 'required|string',
+                'new_password' => 'required|string|min:8',
+                'confirm_password' => 'required|string|same:new_password',
+            ]);
 
-        $user = auth()->user();
+            $actor = auth()->user();
 
-        // Verify the current password
-        if (!Hash::check($request->current_password, $user->password)) {
-            return response()->json(['error' => 'Current password is incorrect'], 401);
+            if (!Hash::check($request->current_password, $actor->password)) {
+                return response()->json(['status' => 1, 'message' => 'Current password is incorrect']);
+            }
+
+            $actor->update([
+                'password' => Hash::make($request->new_password),
+            ]);
+
+            return response()->json(['status' => 0, 'message' => 'Password changed successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 1, 'message' => 'Failed to change password', 'error' => $e->getMessage()]);
         }
-
-        // Update the password
-        $user->update([
-            'password' => Hash::make($request->new_password),
-        ]);
-
-        return response()->json(['message' => 'Password changed successfully']);
     }
-
     public function changeFirstName(Request $request)
     {
         $request->validate([
@@ -90,7 +92,7 @@ class UpdateActorInformations extends Controller
         return response()->json(['message' => 'Birthdate changed successfully']);
     }
 
-    public function createTeamAndMakeCaptain(Request $request)
+    public function createTeam(Request $request)
     {
         $request->validate([
             'id' => 'required|exists:ActorPersonalInfos,id',
