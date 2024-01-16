@@ -28,16 +28,7 @@ use App\Models\SportType;
 use App\Models\Team_to_Team_matching;
 use App\Models\Team_toPlayer_matching;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
+
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'PlayerSignup']);
@@ -70,6 +61,7 @@ Route::get('/Notificationcount',[NotificationController::class, 'index']);  //wo
 Route::get('/TopStadiums',[GetTopReservedStadiums::class, 'getTopReservedStadiums']);  // not working
 Route::get('/TeamtoTeamMatches',[GetTeamtoTeamMatches::class , 'GetTeamtoTeamMatches']);
 Route::get('/teamtoPlayermatches',[GetTeamtoPlayerMatches::class, 'GetTeamtoPlayerMatches']);
+Route::get('/clubreservation',[ReservationController::class, 'ClubReservation']);
 
 Route::post('/change-password', [UpdateActorInformations::class, 'changePassword']);
 Route::post('/change-firstname', [UpdateActorInformations::class, 'changeFirstName']);

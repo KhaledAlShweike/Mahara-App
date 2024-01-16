@@ -11,9 +11,20 @@ class TournementController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $this->validate($request, [
+            'Location_name' => 'required|exists:Locations,name',
+        ]);
+
+        $LocationName = $request->input('Location_name');
+        $Touenements = Tournement::where('Location', $LocationName)->get();
+
+        if (  $Touenements->isEmpty()) {
+            return response()->json(['message' => 'No   Touenements found in this Location'], 404);
+        }
+
+        return response()->json(['Touenements' =>   $Touenements], 200);
     }
 
     /**

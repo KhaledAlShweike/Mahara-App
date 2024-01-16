@@ -15,7 +15,6 @@ class NotificationController extends Controller
     {
         $count = Notification::where('is_read', false)->count();
 
-        // Return the count in the response
         return response()->json(['count' => $count]);
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Club;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -16,6 +17,23 @@ class ReservationController extends Controller
         $Reservations = Reservation::all();
 
         return response()->json(['Reservations' => $Reservations]);
+    }
+
+
+    public function ClubReservation(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|exists:Club,name',
+        ]);
+
+        $CLubname = $request->input('name');
+        $Reservation = Reservation::where('Location', $CLubname)->get();
+
+        if ($Reservation->isEmpty()) {
+            return response()->json(['message' => 'No reservation found in this club'], 404);
+        }
+
+        return response()->json(['Reservation' => $Reservation], 200);
     }
 
     /**
