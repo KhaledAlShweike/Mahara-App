@@ -40,7 +40,6 @@ use App\Models\Team_toPlayer_matching;
 */
 
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/login/ClubManager', [AuthController::class, 'ClubManagerLogin']);
 Route::post('/register', [AuthController::class, 'PlayerSignup']);
 Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/Reservations', [ReservationController::class, 'index']);
