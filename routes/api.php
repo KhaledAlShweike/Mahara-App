@@ -42,7 +42,7 @@ use App\Models\Team_toPlayer_matching;
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'PlayerSignup']);
 Route::post('/logout', [AuthController::class, 'logout']);
-Route::get('/Reservations', [ReservationController::class, 'index']);
+Route::get('/Reservations', [ReservationController::class, 'index']);  //works
 
 
 Route::post('/signup', [AuthController::class, 'signup']);
@@ -56,18 +56,18 @@ Route::get('/stadiam/{id}', [StadiumController::class, 'show']);
 Route::post('/ToTmatching', [TeamtoTeamMatching::class, 'TeamtoTeamMatching']);
 Route::post('/ToPmatching', [TeamtoPlayer_Matching::class, 'TeamtoPlayerMatching']);
 
-Route::get('/sports', [SportTypeController::class, 'index']);
-Route::get('/cities', [LocationController::class, 'index']);
-Route::get('/Clubs', [ClubController::class, 'index']);
-Route::get('/Stadiums', [StadiumController::class, 'index']);
-Route::get('/Locations', [LocationController::class, 'index']);
-Route::get('/PlayertoTeammatches', [PlayerToTeamMatchingController::class, 'getPlayertoTeammatching']);
-Route::get('/TeamtoTeammatches', [TeamtoTeamMatchingController::class, 'getTeamtoTeamMatching']);
-Route::get('/PlayerReservation', [GetPlayerReservation::class, 'GetPlayerReservation']);
-Route::get('/NewestStadiums', [GetNewestStadiums::class, 'GetNewestStadiums']);
-Route::get('/NewestClubs', [GetNewestClubs::class, 'GetNewestClubs']);
-Route::get('/Notificationcount',[NotificationController::class, 'index']);
-Route::get('/TopStadiums',[GetTopReservedStadiums::class, 'getTopReservedStadiums']);
+Route::get('/sports', [SportTypeController::class, 'index']);     //works
+Route::get('/cities', [LocationController::class, 'index']);     //works
+Route::get('/Clubs', [ClubController::class, 'index']);         //not working
+Route::get('/Stadiums', [StadiumController::class, 'index']);      //not working
+Route::get('/Locations', [LocationController::class, 'index']);  // works
+Route::get('/PlayertoTeammatches', [PlayerToTeamMatchingController::class, 'getPlayertoTeammatching']);// not working
+Route::get('/TeamtoTeammatches', [TeamtoTeamMatchingController::class, 'getTeamtoTeamMatching']);// not working
+Route::get('/PlayerReservation', [GetPlayerReservation::class, 'GetPlayerReservation']);  // not working
+Route::get('/NewestStadiums', [GetNewestStadiums::class, 'GetNewestStadiums']);    //works
+Route::get('/NewestClubs', [GetNewestClubs::class, 'GetNewestClubs']);    //works
+Route::get('/Notificationcount',[NotificationController::class, 'index']);  //works
+Route::get('/TopStadiums',[GetTopReservedStadiums::class, 'getTopReservedStadiums']);  // not working
 Route::get('/TeamtoTeamMatches',[GetTeamtoTeamMatches::class , 'GetTeamtoTeamMatches']);
 Route::get('/teamtoPlayermatches',[GetTeamtoPlayerMatches::class, 'GetTeamtoPlayerMatches']);
 
@@ -82,4 +82,5 @@ Route::post('/acceptplayer', [TeamManagement::class, 'AcceptPlayer']);
 Route::post('/removePlayer', [TeamManagement::class, 'removePlayer']);
 Route::post('/makecaptin', [TeamManagement::class, 'MakeCaptin']);
 Route::post('/removecaptin', [TeamManagement::class, 'RemoveCaptin']);
+
 

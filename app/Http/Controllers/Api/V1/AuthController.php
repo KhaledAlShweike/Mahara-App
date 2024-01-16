@@ -18,13 +18,13 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class AuthController extends Controller
 {
 
-    function register(Request $request)
+    function Register(Request $request)
     {
         $this->validate($request, [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:14',
-            'email' => 'exists:email|unique:players|max:255',
+            'email' => 'nullable|exists:email|unique:players|max:255',
             'password' => 'required|string|min:8',
             'locations' => 'required|string|max:255',
             'gender' => 'required|in:male,female,other',
@@ -50,7 +50,7 @@ class AuthController extends Controller
 
 
 
-    public function login(Request $request)
+    public function Login(Request $request)
     {
         $credentials = $request->only('phone_number', 'password');
 

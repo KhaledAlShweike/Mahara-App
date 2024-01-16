@@ -126,4 +126,6 @@ class TeamManagement extends Controller
             return response()->json(['status' => 1, 'message' => 'Failed to exit the team.', 'error' => $e->getMessage()]);
         }
     }
+
+
 }
