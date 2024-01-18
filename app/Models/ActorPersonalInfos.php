@@ -27,6 +27,7 @@ class ActorPersonalInfos extends Model
         'b_date',
         'gender'
     ];
+    
     protected $dates = [
         'b_date',
     ];

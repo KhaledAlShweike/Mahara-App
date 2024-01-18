@@ -23,6 +23,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PlayerToTeamMatchingController;
 use App\Http\Controllers\SportTypeController;
 use App\Http\Controllers\TeamtoTeamMatchingController;
+use App\Models\Notification;
 use App\Models\Pending_TeamtoTeam_matching;
 use App\Models\SportType;
 use App\Models\Team_to_Team_matching;
@@ -75,4 +76,4 @@ Route::post('/removePlayer', [TeamManagement::class, 'removePlayer']);
 Route::post('/makecaptin', [TeamManagement::class, 'MakeCaptin']);
 Route::post('/removecaptin', [TeamManagement::class, 'RemoveCaptin']);
 
-
+Route::get('/playernotifications',[Notification::class,'PlayerNotifications']);

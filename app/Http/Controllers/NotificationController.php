@@ -2,16 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Archive;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class NotificationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    
+  
+  public function PlayerNotifications(Request $request)
+  {
+    $this->validate($request, [
+        'player_id' => 'required|exists:Player,id',
+    ]);
+
+    $playerId = $request->input('player_id');
+    $notifications = Notification::where('player_id', $playerId)->get();
+
+    if ($notifications->isEmpty()) {
+        return response()->json(['message' => 'No Notifications found for this player'], 404);
+    }
+
+    return response()->json(['Notifications' => $notifications], 200);
+  }
+  
+     public function index()
     {
         $count = Notification::where('is_read', false)->count();
 
