@@ -14,20 +14,30 @@ class ClubController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+
     public function index(Request $request)
     {
         $this->validate($request, [
             'Location_name' => 'required|exists:Locations,name',
         ]);
 
-        $LocationName = $request->input('Location_name');
-        $Clubs = Club::where('Location', $LocationName)->get();
 
-        if ($Clubs->isEmpty()) {
-            return response()->json(['message' => 'No Clubs found in this Location'], 404);
+        try {
+            $cityName = $request->input('Location_name');
+            $searchQuery = $request->input('search_query', '');
+
+            $clubs = Club::where('Location', $cityName)
+                ->where(function ($query) use ($searchQuery) {
+                    $query->where('name', 'like', '%' . $searchQuery . '%')
+                        ->orWhere('name', 'like', $searchQuery . '%');
+                })
+                ->get();
+
+            return response()->json(['status' => 0, 'clubs' => $clubs]);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 1, 'error' => $e->getMessage()]);
         }
-
-        return response()->json(['Clubs' => $Clubs], 200);
     }
 
     /**

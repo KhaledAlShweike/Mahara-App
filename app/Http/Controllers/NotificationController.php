@@ -9,25 +9,38 @@ use Illuminate\Routing\Controller;
 
 class NotificationController extends Controller
 {
+    public function getPlayerNotificationCount($playerId)
+    {
+        // Retrieve the count of unread notifications for the player
+        $notificationCount = Notification::where('player_id', $playerId)
+            ->where('read', false)
+            ->count();
+
+        return response()->json(['notification_count' => $notificationCount]);
+    }
     
-  
-  public function PlayerNotifications(Request $request)
-  {
-    $this->validate($request, [
-        'player_id' => 'required|exists:Player,id',
-    ]);
 
-    $playerId = $request->input('player_id');
-    $notifications = Notification::where('player_id', $playerId)->get();
+    public function PlayerNotifications(Request $request)
+    {
+        $this->validate($request, [
+            'player_id' => 'required|exists:Player,id',
+        ]);
 
-    if ($notifications->isEmpty()) {
-        return response()->json(['message' => 'No Notifications found for this player'], 404);
+        $playerId = $request->input('player_id');
+        $notifications = Notification::where('player_id', $playerId)->where('is_read', false)->get();
+
+        Notification::where('player_id', $playerId)
+            ->where('read', false)
+            ->update(['read' => true]);
+
+        if ($notifications->isEmpty()) {
+            return response()->json(['message' => 'No Notifications found for this player'], 404);
+        }
+
+        return response()->json(['Notifications' => $notifications], 200);
     }
 
-    return response()->json(['Notifications' => $notifications], 200);
-  }
-  
-     public function index()
+    public function index()
     {
         $count = Notification::where('is_read', false)->count();
 

@@ -77,3 +77,4 @@ Route::post('/makecaptin', [TeamManagement::class, 'MakeCaptin']);
 Route::post('/removecaptin', [TeamManagement::class, 'RemoveCaptin']);
 
 Route::get('/playernotifications',[Notification::class,'PlayerNotifications']);
+Route::get('/playernotificationcount',[Notification::class,'getPlayerNotificationCount']);
