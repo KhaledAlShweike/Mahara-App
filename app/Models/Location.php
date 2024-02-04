@@ -26,10 +26,7 @@ class Location extends Model
     {
         return $this->hasMany(Tournement::class);
     }
-    public function PendingTeamtoTeamMatchings()
-    {
-        return $this->hasMany(PendingTeamtoTeamMatching::class);
-    }
+  
     public function PlayertoTeamMatchings()
     {
         return $this->hasMany(PlayertoTeamMatching::class);
