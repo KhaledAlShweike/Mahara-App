@@ -17,8 +17,7 @@ return new class extends Migration
     {
         Schema::create('TeamtoTeamMatchings', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('start_time')->nullable()->comment("Match start time");
-            $table->dateTime('end_time')->nullable()->comment("Match end time");
+            $table->enum('start_time',[ '1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16'])->nullable()->comment("Match start time");
             $table->foreignId('Team1_id')->nullable()->constrained('Teams');
             $table->foreignId('Team2_id')->nullable()->constrained('Teams');
             $table->foreignIdFor(Club::class)->nullable()->constrained('Clubs');
