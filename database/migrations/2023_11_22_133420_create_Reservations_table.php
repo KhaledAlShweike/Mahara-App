@@ -14,11 +14,10 @@ return new class extends Migration
     {
         Schema::create('Reservations', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('start_datetime');
-            $table->dateTime('end_datetime');
+            $table->dateTime('date');
+            $table->enum('slot', ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15']);
             $table->foreignIdFor(Stadium::class)->nullable()->constrained('Stadiums');
             $table->timestamps();
-
         });
     }
 

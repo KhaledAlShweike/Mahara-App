@@ -18,9 +18,8 @@ return new class extends Migration
         Schema::create('PlayertoTeamMatchings', function (Blueprint $table) {
             $table->id();
             $table->string('position');
+            $table->enum('slot', ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'])->nullable()->comment("Match start time");
             $table->dateTime('start_time')->nullable()->comment("Match start time");
-            $table->dateTime('end_time')->nullable()->comment("Match end time");
-            $table->foreignIdFor(Location::class)->nullable()->constrained('Locations');
             $table->foreignIdFor(Team::class)->nullable()->constrained('Teams');
             $table->foreignIdFor(Player::class)->nullable()->constrained('Players');
             $table->foreignIdFor(SportType::class)->nullable()->constrained('SportTypes');

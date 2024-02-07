@@ -14,30 +14,26 @@ class TeamtoTeamMatching extends Controller
     {
         // Validation 
         $this->validate($request, [
-            'start_time' => 'date_format:Y-m-d H:i:s',
-            'end_time' => 'date_format:Y-m-d H:i:s|after:start_time',
+            'date' => 'date_format:Y-m-d H:i:s',
+            'slot' => 'required|integer',
+            'stadium_id' => 'required|exists:Stadiums|integer',
             'Team1_id' => 'required|exists:Teams,id',
             'Team2_id' => 'required|exists:Teams,id|different:Team1_id',
-            'Location' => 'required|exists:Locations,name',
+            'status' => 'required|integer',
             'SportType' => 'required|exists:SportTypes,name',
         ]);
 
-        $startTime = $request->input('start_time');
-        $endTime = $request->input('end_time');
+        $Date = $request->input('date');
+        $Slot = $request->input('slot');
+        $Stadiumid = $request->input('stadium_id');
         $Team1Id = $request->input('Team1_id');
         $Team2Id = $request->input('Team2_id');
-        $Location = $request->input('Location');
+        $Status = $request->input('status');
         $sportType = $request->input('SportType');
 
         // Search for available Reservations within the specified time range
-        $availableReservations = Reservation::where(function ($query) use ($startTime, $endTime) {
-            $query->where(function ($subQuery) use ($startTime, $endTime) {
-                $subQuery->where('start_time', '>=', $startTime)
-                    ->orWhere('end_time', '<=', $endTime);
-            })->orWhere(function ($subQuery) use ($startTime, $endTime) {
-                $subQuery->where('start_time', '<=', $startTime)
-                    ->where('end_time', '>=', $endTime);
-            });
+        $availableReservations = Reservation::where(function ($query) use ($Date) {
+            
         })->doesntHave('Pending_TeamtoTeam_matchings')->doesntHave('Team_to_Team_matching')->get();
 
         // Perform Team matching logic based on available Reservations
@@ -45,10 +41,10 @@ class TeamtoTeamMatching extends Controller
             $matchingCriteria = [
                 'Team1_id' => $Team1Id,
                 'Team2_id' => $Team2Id,
-                'Location' => $Location,
+                'slot' => $Slot,
                 'SportType' => $sportType,
-                'start_time' => $startTime,
-                'end_time' => $endTime,
+                'date' => $Date,
+                'stadium_id'=>$Stadiumid,
             ];
 
             // Check if Teams match and add to pending Team to Team matching

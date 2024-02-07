@@ -32,7 +32,7 @@ use App\Models\Team_toPlayer_matching;
 
 
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/register', [AuthController::class, 'PlayerSignup']);
+Route::post('/register', [AuthController::class, 'Register']);
 Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/Reservations', [ReservationController::class, 'index']);  //works
 
@@ -50,9 +50,9 @@ Route::post('/ToPmatching', [TeamtoPlayer_Matching::class, 'TeamtoPlayerMatching
 
 Route::get('/sports', [SportTypeController::class, 'index']);     //works
 Route::get('/cities', [LocationController::class, 'index']);     //works
-Route::get('/Clubs', [ClubController::class, 'index']);         //not working
-Route::get('/Stadiums', [StadiumController::class, 'index']);      //not working
-Route::get('/Locations', [LocationController::class, 'index']);  // works
+Route::get('/clubs', [ClubController::class, 'index']);         //not working
+Route::get('/stadiums', [StadiumController::class, 'index']);      //not working
+Route::get('/locations', [LocationController::class, 'index']);  // works
 Route::get('/PlayertoTeammatches', [PlayerToTeamMatchingController::class, 'getPlayertoTeammatching']);// not working
 Route::get('/TeamtoTeammatches', [TeamtoTeamMatchingController::class, 'getTeamtoTeamMatching']);// not working
 Route::get('/PlayerReservation', [GetPlayerReservation::class, 'GetPlayerReservation']);  // not working

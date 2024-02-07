@@ -20,6 +20,7 @@ class AuthController extends Controller
 
     function Register(Request $request)
     {
+        
         $this->validate($request, [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
