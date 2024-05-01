@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\V1\GetPlayerReservation;
 use App\Http\Controllers\Api\V1\GetTeamtoPlayerMatches;
 use App\Http\Controllers\Api\V1\GetTeamtoTeamMatches;
 use App\Http\Controllers\Api\V1\GetTopReservedStadiums;
+use App\Http\Controllers\Api\V1\RegisterController;
 use App\Http\Controllers\Api\V1\TeamManagement;
 use App\Http\Controllers\Api\V1\TeamtoPlayer_Matching;
 use App\Http\Controllers\Api\V1\TeamtoTeamMatching;
@@ -30,9 +31,13 @@ use App\Models\Team_to_Team_matching;
 use App\Models\Team_toPlayer_matching;
 
 
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
 
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/register', [AuthController::class, 'Register']);
+Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/Reservations', [ReservationController::class, 'index']);  //works
 
@@ -45,7 +50,7 @@ Route::post('/upload-Image', [ImageController::class, 'upload']);
 Route::get('/Clubs/{id}', [ClubController::class, 'show']);
 Route::get('/stadiam/{id}', [StadiumController::class, 'show']);
 
-Route::post('/ToTmatching', [TeamtoTeamMatching::class, 'TeamtoTeamMatching']);
+Route::post('/ToTmatching', [App\Models\TeamtoTeamMatching::class, 'TeamtoTeamMatching']);
 Route::post('/ToPmatching', [TeamtoPlayer_Matching::class, 'TeamtoPlayerMatching']);
 
 Route::get('/sports', [SportTypeController::class, 'index']);     //works
